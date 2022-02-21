@@ -3,12 +3,13 @@ import Head from 'next/head'
 import { PageHead } from './PageHead'
 
 import styles from './styles.module.css'
+import MainLayout from '../layouts/Main'
 
 export const ErrorPage: React.FC<{ statusCode: number }> = ({ statusCode }) => {
   const title = 'Error'
 
   return (
-    <>
+    <MainLayout>
       <PageHead />
 
       <Head>
@@ -27,6 +28,6 @@ export const ErrorPage: React.FC<{ statusCode: number }> = ({ statusCode }) => {
           <img src='/error.png' alt='Error' className={styles.errorImage} />
         </main>
       </div>
-    </>
+    </MainLayout>
   )
 }

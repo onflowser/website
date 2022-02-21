@@ -2,6 +2,7 @@ import React from 'react'
 import { domain } from 'lib/config'
 import { resolveNotionPage } from 'lib/resolve-notion-page'
 import { NotionPage } from 'components'
+import BlogLayout from '../layouts/Blog'
 
 export const getStaticProps = async () => {
   try {
@@ -18,5 +19,9 @@ export const getStaticProps = async () => {
 }
 
 export default function NotionDomainPage(props) {
-  return <NotionPage {...props} />
+  return (
+    <BlogLayout>
+      <NotionPage {...props} />
+    </BlogLayout>
+  )
 }

@@ -1,33 +1,9 @@
 import React from 'react'
-import Link from 'next/link'
+import MainLayout from '../layouts/Main'
 
 function Index() {
   return (
-    <>
-      <div className='navbar'>
-        <div className='navbar-content'>
-          <div className='navbar-logo'>
-            <img src='images/flowser-logo.svg' alt='' />
-            <span>Flowser</span>
-          </div>
-
-          <div className='navbar-content-right'>
-            <div className='navbar-links'>
-              <Link href='/about'>ABOUT</Link>
-            </div>
-            <div className='navbar-links'>
-              <a
-                target='_blank'
-                href='https://github.com/onflowser/flowser#-get-started'
-              >
-                QUICK START
-              </a>
-              <img src='images/tutorials.svg' alt='' />
-            </div>
-          </div>
-        </div>
-      </div>
-
+    <MainLayout>
       <div className='plain-text'>
         <h1>Flow GUI Browser</h1>
         <h4>
@@ -113,11 +89,7 @@ function Index() {
       <div id='screen-animation'>
         <img src='images/gif1-blue-line.gif' alt='gif-different-screens' />
       </div>
-
-      <div className='footer'>
-        <img src='./images/footer-logo.png' alt='' />
-      </div>
-    </>
+    </MainLayout>
   )
 }
 

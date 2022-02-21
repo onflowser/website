@@ -1,32 +1,9 @@
 import React from 'react'
-import Link from 'next/link'
+import MainLayout from '../layouts/Main'
 
 function About() {
   return (
-    <>
-      <div className='navbar'>
-        <div className='navbar-content'>
-          <Link href='/'>
-            <div className='navbar-logo'>
-              <img src='images/flowser-logo.svg' alt='' />
-              <span>Flowser</span>
-            </div>
-          </Link>
-
-          <div className='navbar-content-right'>
-            <div className='navbar-links'>
-              <a
-                target='_blank'
-                href='https://github.com/onflowser/flowser#-get-started'
-              >
-                QUICK START
-              </a>
-              <img src='images/tutorials.svg' alt='' />
-            </div>
-          </div>
-        </div>
-      </div>
-
+    <MainLayout>
       <div className='plain-text'>
         <h1>HELLO!</h1>
         <h4>
@@ -67,11 +44,7 @@ function About() {
           <a href='https://www.linkedin.com/in/monikahribersek/'>Linkedin</a>
         </p>
       </div>
-
-      <div className='footer'>
-        <img src='./images/footer-logo.png' alt='' />
-      </div>
-    </>
+    </MainLayout>
   )
 }
 
