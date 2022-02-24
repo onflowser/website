@@ -5,7 +5,6 @@ import cs from 'classnames'
 import { useRouter } from 'next/router'
 import { useSearchParam } from 'react-use'
 import BodyClassName from 'react-body-classname'
-import useDarkMode from 'use-dark-mode'
 import { PageBlock } from 'notion-types'
 
 import { Tweet, TwitterContextProvider } from 'react-static-tweets'
@@ -29,7 +28,6 @@ import { Loading } from './Loading'
 import { Page404 } from './Page404'
 import { PageMeta } from './PageMeta'
 import { PageActions } from './PageActions'
-import { Footer } from './Footer'
 import { PageSocial } from './PageSocial'
 import { ReactUtterances } from './ReactUtterances'
 
@@ -87,8 +85,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
   // lite mode is for oembed
   const isLiteMode = lite === 'true'
   const searchParams = new URLSearchParams(params)
-
-  const darkMode = useDarkMode(false, { classNameDark: 'dark-mode' })
 
   if (router.isFallback) {
     return <Loading />
@@ -154,7 +150,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
           repo={config.utterancesGitHubRepo}
           issueMap='issue-term'
           issueTerm='title'
-          theme={darkMode.value ? 'photon-dark' : 'github-light'}
+          theme={'github-light'}
         />
       )
     }
@@ -187,7 +183,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         canonicalUrl={canonicalPageUrl}
       />
 
-      <CustomFont site={site} />
+      {/* <CustomFont site={site} /> */}
 
       <Cover
         title={title}
@@ -237,7 +233,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         recordMap={recordMap}
         rootPageId={site.rootNotionPageId}
         fullPage={false}
-        darkMode={darkMode.value}
+        darkMode={false}
         previewImages={site.previewImages !== false}
         showCollectionViewDropdown={false}
         showTableOfContents={showTableOfContents}

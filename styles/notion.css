@@ -10,6 +10,9 @@
 .notion {
   --notion-max-width: 720px;
   --notion-header-height: 54px;
+  font-family: futura-pt, sans-serif;
+  font-size: 18px;
+  color: var(--font-color)
 }
 
 .notion-page {
