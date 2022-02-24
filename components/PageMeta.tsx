@@ -72,8 +72,9 @@ export const PageMeta: React.FC<Props> = ({
 
       <title>{title}</title>
 
-      <meta name='theme-color' content='#EB625A' />
+      <meta name='theme-color' content='#B2AFE8' />
       <meta property='og:type' content='website' />
+      <meta property='og:url' content={canonicalUrl} />
     </Head>
   )
 }

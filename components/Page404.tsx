@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import * as React from 'react'
 import * as types from 'lib/types'
 import { PageMeta } from './PageMeta'
@@ -6,18 +5,12 @@ import { PageMeta } from './PageMeta'
 import styles from './styles.module.css'
 
 export const Page404: React.FC<types.PageProps> = ({ site, pageId, error }) => {
-  const title = site?.name || 'Notion Page Not Found'
-
   return (
     <>
-      <PageMeta site={site} />
-
-      <Head>
-        <meta property='og:site_name' content={title} />
-        <meta property='og:title' content={title} />
-
-        <title>{title}</title>
-      </Head>
+      <PageMeta
+        title='Page not found'
+        description="Oops! Looks like this page doesn't exist."
+      />
 
       <div className={styles.container}>
         <main className={styles.main}>
