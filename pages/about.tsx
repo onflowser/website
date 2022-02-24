@@ -8,10 +8,15 @@ import teamImage from '../public/images/team.svg'
 import jernejImage from '../public/images/jernej.svg'
 import bartImage from '../public/images/bartolomej.svg'
 import monikaImage from '../public/images/monika.svg'
+import { PageMeta } from '../components/PageMeta'
 
 function About() {
   return (
     <MainLayout>
+      <PageMeta
+        title='Flowser - About Us'
+        description='How did Flowser came to be ? Learn about who is behind the Flowser team and why did we choose to make this tool.'
+      />
       <Cover foregroundImageSrc={teamImage} />
 
       <div className='plain-text'>
