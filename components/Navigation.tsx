@@ -6,33 +6,35 @@ function Navigation() {
   return (
     <div className='nav-bar'>
       <Link href='/'>
-        <img src='./images/logo_with_text.svg' alt='' />
+        <a>
+          <img src='./images/logo_with_text.svg' alt='' />
+        </a>
       </Link>
       <div className='nav-bar-links'>
-        <Link href='/about'>About us</Link>
+        <NavLink href='/about'>About us</NavLink>
         <Link href='https://github.com/onflowser/flowser#-get-started'>
           Quick start
         </Link>
-        <a href='/blog'>Blog</a>
+        <NavLink href='/blog'>Blog</NavLink>
       </div>
     </div>
   )
 }
 
 type NavLinkProps = {
-  route: string
+  href: string
   children: string | ReactElement | ReactElement[]
 }
 
-const NavLink = ({ route, children }: NavLinkProps) => {
+const NavLink = ({ href, children }: NavLinkProps) => {
   const router = useRouter()
-  const isCurrent = router.route === route
+  const isCurrent = router.route === href
 
-  const classes = ['navbar-links', isCurrent && 'navbar-links__current']
+  const classes = [isCurrent && 'nav-bar-link__current']
 
   return (
     <div className={classes.join(' ')}>
-      <Link href={route}>{children}</Link>
+      <Link href={href}>{children}</Link>
     </div>
   )
 }

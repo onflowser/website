@@ -25,11 +25,11 @@ function About() {
         <img src='./images/jernej.svg' alt='' />
         <h2>Jernej</h2>
         <p>
-          <a href='mailto:jernej.gololicic@gmail.com'>E-mail</a> |{' '}
-          <a href='https://github.com/jgololicic'>Github</a> |{' '}
-          <a href='https://www.linkedin.com/in/jernej-gololi%C4%8Di%C4%8D-8a296925/'>
+          <Link href='mailto:jernej.gololicic@gmail.com'>E-mail</Link> |{' '}
+          <Link href='https://github.com/jgololicic'>Github</Link> |{' '}
+          <Link href='https://www.linkedin.com/in/jernej-gololi%C4%8Di%C4%8D-8a296925/'>
             Linkedin
-          </a>
+          </Link>
         </p>
       </div>
 
@@ -37,9 +37,9 @@ function About() {
         <img src='./images/bartolomej.svg' alt='' />
         <h2>Bartolomej</h2>
         <p>
-          <a href='mailto:bartolomej.kozorog@gmail.com'>E-mail</a> |{' '}
-          <a href='https://github.com/bartolomej'>Github</a> |{' '}
-          <a href='https://www.linkedin.com/in/bartolomej/'>Linkedin</a>
+          <Link href='mailto:bartolomej.kozorog@gmail.com'>E-mail</Link> |{' '}
+          <Link href='https://github.com/bartolomej'>Github</Link> |{' '}
+          <Link href='https://www.linkedin.com/in/bartolomej/'>Linkedin</Link>
         </p>
       </div>
 
@@ -47,12 +47,22 @@ function About() {
         <img src='./images/monika.svg' alt='' />
         <h2>Monika</h2>
         <p>
-          <a href='mailto:monika.hribersek@gmail.com'>E-mail</a> |{' '}
-          <a href='https://github.com/monikaxh'>Github</a> |{' '}
-          <a href='https://www.linkedin.com/in/monikahribersek/'>Linkedin</a>
+          <Link href='mailto:monika.hribersek@gmail.com'>E-mail</Link> |{' '}
+          <Link href='https://github.com/monikaxh'>Github</Link> |{' '}
+          <Link href='https://www.linkedin.com/in/monikahribersek/'>
+            Linkedin
+          </Link>
         </p>
       </div>
     </MainLayout>
+  )
+}
+
+const Link = ({ href, children }) => {
+  return (
+    <a target='_blank' href={href}>
+      {children}
+    </a>
   )
 }
 

@@ -79,6 +79,15 @@ p {
   align-items: center;
 }
 
+.nav-bar * {
+  /* Needs high z-index, so that it doesn't render bellow notion-viewport */
+  z-index: 10;
+}
+
+.nav-bar a {
+  cursor: pointer;
+}
+
 .nav-bar img {
   width: 200px;
   max-width: 100%;
@@ -92,6 +101,10 @@ p {
   flex-direction: row;
   justify-content: space-between;
   padding-right: 50px;
+}
+
+.nav-bar-link__current * {
+  color: var(--light-violet-color) !important;
 }
 
 .nav-bar-links a {
@@ -315,6 +328,7 @@ p {
   background-color: var(--dark-blue-color);
   padding-top: 50px;
   padding-bottom: 50px;
+  width: 100%;
 }
 
 .footer-content {

@@ -19,13 +19,13 @@ export const Footer: React.FC<{
         </a>
 
         <div className='social-icons'>
-          <a href='https://twitter.com/onflowser'>
+          <a href='https://twitter.com/onflowser' target='_blank'>
             <img src='./images/twitter.svg' alt='' />
           </a>
-          <a href='mailto:info.flowser@gmail.com'>
+          <a href='mailto:info.flowser@gmail.com' target='_blank'>
             <img src='./images/email.svg' alt='' />
           </a>
-          <a href='https://github.com/onflowser/flowser'>
+          <a href='https://github.com/onflowser/flowser' target='_blank'>
             <img src='./images/git.svg' alt='' />
           </a>
         </div>
