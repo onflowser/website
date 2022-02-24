@@ -8,7 +8,7 @@ import flowserImage from '../public/images/flowser.svg'
 function Index() {
   return (
     <MainLayout>
-      <Cover imageSrc={flowserImage} />
+      <Cover foregroundImageSrc={flowserImage} />
 
       <div className='presentation'>
         <div className='presentation-content-wrap'>

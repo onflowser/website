@@ -12,7 +12,7 @@ import monikaImage from '../public/images/monika.svg'
 function About() {
   return (
     <MainLayout>
-      <Cover imageSrc={teamImage} />
+      <Cover foregroundImageSrc={teamImage} />
 
       <div className='plain-text'>
         <h1>HELLO!</h1>

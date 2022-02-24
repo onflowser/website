@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
-import { PageHead } from './PageHead'
+import { PageMeta } from './PageMeta'
 
 import styles from './styles.module.css'
 import MainLayout from '../layouts/Main'
@@ -10,7 +10,7 @@ export const ErrorPage: React.FC<{ statusCode: number }> = ({ statusCode }) => {
 
   return (
     <MainLayout>
-      <PageHead />
+      <PageMeta />
 
       <Head>
         <meta property='og:site_name' content={title} />

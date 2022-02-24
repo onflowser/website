@@ -1,5 +1,4 @@
 import * as React from 'react'
-import Head from 'next/head'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import cs from 'classnames'
@@ -28,13 +27,15 @@ import * as config from 'lib/config'
 import { CustomFont } from './CustomFont'
 import { Loading } from './Loading'
 import { Page404 } from './Page404'
-import { PageHead } from './PageHead'
+import { PageMeta } from './PageMeta'
 import { PageActions } from './PageActions'
 import { Footer } from './Footer'
 import { PageSocial } from './PageSocial'
 import { ReactUtterances } from './ReactUtterances'
 
 import styles from './styles.module.css'
+import Cover from './Cover'
+import { isEmoji } from '../lib/utils'
 
 // const Code = dynamic(() =>
 //   import('react-notion-x').then((notion) => notion.Code)
@@ -107,7 +108,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
     title,
     pageId,
     rootNotionPageId: site.rootNotionPageId,
-    recordMap
+    recordMap,
+    block
   })
 
   if (!config.isServer) {
@@ -134,6 +136,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
     (block as PageBlock).format?.page_cover || config.defaultPageCover,
     block
   )
+
+  const icon = mapNotionImageUrl((block as PageBlock).format?.page_icon, block)
+  const isEmojiIcon = isEmoji(icon)
 
   const socialDescription =
     getPageDescription(block, recordMap) ?? config.description
@@ -172,49 +177,23 @@ export const NotionPage: React.FC<types.PageProps> = ({
         }
       }}
     >
-      <PageHead site={site} />
-
-      <Head>
-        <meta property='og:title' content={title} />
-        <meta property='og:site_name' content={site.name} />
-
-        <meta name='twitter:title' content={title} />
-        <meta property='twitter:domain' content={site.domain} />
-
-        {config.twitter && (
-          <meta name='twitter:creator' content={`@${config.twitter}`} />
-        )}
-
-        {socialDescription && (
-          <>
-            <meta name='description' content={socialDescription} />
-            <meta property='og:description' content={socialDescription} />
-            <meta name='twitter:description' content={socialDescription} />
-          </>
-        )}
-
-        {socialImage ? (
-          <>
-            <meta name='twitter:card' content='summary_large_image' />
-            <meta name='twitter:image' content={socialImage} />
-            <meta property='og:image' content={socialImage} />
-          </>
-        ) : (
-          <meta name='twitter:card' content='summary' />
-        )}
-
-        {canonicalPageUrl && (
-          <>
-            <link rel='canonical' href={canonicalPageUrl} />
-            <meta property='og:url' content={canonicalPageUrl} />
-            <meta property='twitter:url' content={canonicalPageUrl} />
-          </>
-        )}
-
-        <title>{title}</title>
-      </Head>
+      <PageMeta
+        title={title}
+        description={site.description}
+        socialDescription={socialDescription}
+        name={site.name}
+        domain={site.domain}
+        image={socialImage}
+        canonicalUrl={canonicalPageUrl}
+      />
 
       <CustomFont site={site} />
+
+      <Cover
+        title={title}
+        backgroundImageSrc={socialImage}
+        icon={isEmojiIcon ? icon : <img alt='' src={icon} />}
+      />
 
       {isLiteMode && <BodyClassName className='notion-lite' />}
 
@@ -257,7 +236,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         }}
         recordMap={recordMap}
         rootPageId={site.rootNotionPageId}
-        fullPage={!isLiteMode}
+        fullPage={false}
         darkMode={darkMode.value}
         previewImages={site.previewImages !== false}
         showCollectionViewDropdown={false}

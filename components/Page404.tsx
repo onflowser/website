@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import * as React from 'react'
 import * as types from 'lib/types'
-import { PageHead } from './PageHead'
+import { PageMeta } from './PageMeta'
 
 import styles from './styles.module.css'
 
@@ -10,7 +10,7 @@ export const Page404: React.FC<types.PageProps> = ({ site, pageId, error }) => {
 
   return (
     <>
-      <PageHead site={site} />
+      <PageMeta site={site} />
 
       <Head>
         <meta property='og:site_name' content={title} />

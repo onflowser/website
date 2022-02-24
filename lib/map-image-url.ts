@@ -1,7 +1,12 @@
 import { Block } from 'notion-types'
 import { imageCDNHost } from './config'
+import { isEmoji } from './utils'
 
 export const mapNotionImageUrl = (url: string, block: Block) => {
+  if (isEmoji(url)) {
+    return url
+  }
+
   if (!url) {
     return null
   }
