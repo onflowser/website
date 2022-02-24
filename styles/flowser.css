@@ -373,15 +373,13 @@ p {
 }
 
 .about-one-person {
-  max-width: 600px;
   max-width: 100%;
   padding-left: 50px;
   padding-right: 50px;
   align-items: center;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  margin-bottom: 80px;
+  margin: 0 auto 80px;
 }
 
 .about-one-person h2 {
@@ -389,7 +387,7 @@ p {
   font-weight: 800;
   font-style: normal;
   font-size: 30px;
-  margin: 0px;
+  margin: 10px 0 0;
 }
 
 .about-one-person img {
@@ -400,7 +398,7 @@ p {
 
 .about-one-person a {
   text-decoration: none;
-  color: var(--main-blue-color);
+  font-size: 18px;
 }
 
 .about-one-person a:hover {
@@ -410,7 +408,6 @@ p {
 
 .about-one-person a:visited {
   text-decoration: none;
-  color: var(--main-blue-color);
 }
 
 

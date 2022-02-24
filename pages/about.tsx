@@ -1,7 +1,13 @@
 import React from 'react'
+import Image, { ImageProps } from 'next/image'
 import MainLayout from '../layouts/Main'
-import teamImage from '../public/images/team.png'
 import Cover from '../components/Cover'
+
+// images
+import teamImage from '../public/images/team.svg'
+import jernejImage from '../public/images/jernej.svg'
+import bartImage from '../public/images/bartolomej.svg'
+import monikaImage from '../public/images/monika.svg'
 
 function About() {
   return (
@@ -18,7 +24,7 @@ function About() {
       </div>
 
       <div className='about-one-person'>
-        <img src='./images/jernej.svg' alt='' />
+        <Avatar src={jernejImage} alt="Jernej's avatar" />
         <h2>Jernej</h2>
         <p>
           <Link href='mailto:jernej.gololicic@gmail.com'>E-mail</Link> |{' '}
@@ -30,7 +36,7 @@ function About() {
       </div>
 
       <div className='about-one-person'>
-        <img src='./images/bartolomej.svg' alt='' />
+        <Avatar src={bartImage} alt="Bartolomej's avatar" />
         <h2>Bartolomej</h2>
         <p>
           <Link href='mailto:bartolomej.kozorog@gmail.com'>E-mail</Link> |{' '}
@@ -40,7 +46,7 @@ function About() {
       </div>
 
       <div className='about-one-person'>
-        <img src='./images/monika.svg' alt='' />
+        <Avatar src={monikaImage} alt="Monika's avatar" />
         <h2>Monika</h2>
         <p>
           <Link href='mailto:monika.hribersek@gmail.com'>E-mail</Link> |{' '}
@@ -52,6 +58,13 @@ function About() {
       </div>
     </MainLayout>
   )
+}
+
+type AvatarProps = ImageProps
+
+const Avatar = ({ ...rest }: AvatarProps) => {
+  // TODO: convert to png and use placeholder='blur'
+  return <Image {...rest} />
 }
 
 const Link = ({ href, children }) => {

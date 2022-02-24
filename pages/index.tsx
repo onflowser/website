@@ -1,7 +1,9 @@
 import React from 'react'
 import MainLayout from '../layouts/Main'
-import flowserImage from '../public/images/flowser.png'
 import Cover from '../components/Cover'
+
+// images
+import flowserImage from '../public/images/flowser.svg'
 
 function Index() {
   return (
