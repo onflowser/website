@@ -17,6 +17,10 @@
   line-height: 1.65;
 }
 
+.notion-frame {
+  padding: 0;
+}
+
 .index-page {
   --notion-max-width: 900px;
 }

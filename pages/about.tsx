@@ -4,6 +4,14 @@ import MainLayout from '../layouts/Main'
 function About() {
   return (
     <MainLayout>
+      <div className='page-welcome'>
+        <img
+          className='page-welcome-img, page-welcome-img-team'
+          src='./images/team.png'
+          alt=''
+        />
+      </div>
+
       <div className='plain-text'>
         <h1>HELLO!</h1>
         <h4>

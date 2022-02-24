@@ -4,28 +4,16 @@ import { useRouter } from 'next/router'
 
 function Navigation() {
   return (
-    <div className='navbar'>
-      <div className='navbar-content'>
-        <Link href='/'>
-          <div className='navbar-logo'>
-            <img src='images/flowser-logo.svg' alt='' />
-            <span>Flowser</span>
-          </div>
+    <div className='nav-bar'>
+      <Link href='/'>
+        <img src='./images/logo_with_text.svg' alt='' />
+      </Link>
+      <div className='nav-bar-links'>
+        <Link href='/about'>About us</Link>
+        <Link href='https://github.com/onflowser/flowser#-get-started'>
+          Quick start
         </Link>
-
-        <div className='navbar-content-right'>
-          <NavLink route='/blog'>BLOG</NavLink>
-          <NavLink route='/about'>ABOUT</NavLink>
-          <div className='navbar-links'>
-            <a
-              target='_blank'
-              href='https://github.com/onflowser/flowser#-get-started'
-            >
-              QUICK START
-            </a>
-            <img src='images/tutorials.svg' alt='' />
-          </div>
-        </div>
+        <a href='/blog'>Blog</a>
       </div>
     </div>
   )
