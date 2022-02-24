@@ -12,9 +12,12 @@ function Navigation() {
       </Link>
       <div className='nav-bar-links'>
         <NavLink href='/about'>About us</NavLink>
-        <Link href='https://github.com/onflowser/flowser#-get-started'>
+        <NavLink
+          target='_blank'
+          href='https://github.com/onflowser/flowser#-get-started'
+        >
           Quick start
-        </Link>
+        </NavLink>
         <NavLink href='/blog'>Blog</NavLink>
       </div>
     </div>
@@ -23,18 +26,21 @@ function Navigation() {
 
 type NavLinkProps = {
   href: string
+  target?: string
   children: string | ReactElement | ReactElement[]
 }
 
-const NavLink = ({ href, children }: NavLinkProps) => {
+const NavLink = ({ href, children, ...rest }: NavLinkProps) => {
   const router = useRouter()
   const isCurrent = router.route === href
 
-  const classes = [isCurrent && 'nav-bar-link__current']
+  const classes = [isCurrent ? 'nav-bar-link__current' : '']
 
   return (
     <div className={classes.join(' ')}>
-      <Link href={href}>{children}</Link>
+      <Link {...rest} href={href}>
+        {children}
+      </Link>
     </div>
   )
 }

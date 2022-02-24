@@ -34,7 +34,6 @@ export default class MyDocument extends Document {
             <meta name='msapplication-TileColor' content='#da532c' />
             <meta name='theme-color' content='#ffffff' />
 
-            <link rel='stylesheet' href='/style.css' />
             <link rel='stylesheet' href='https://use.typekit.net/sml5pan.css' />
 
             <meta charSet='UTF-8' />

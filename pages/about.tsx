@@ -1,16 +1,12 @@
 import React from 'react'
 import MainLayout from '../layouts/Main'
+import teamImage from '../public/images/team.png'
+import Cover from '../components/Cover'
 
 function About() {
   return (
     <MainLayout>
-      <div className='page-welcome'>
-        <img
-          className='page-welcome-img, page-welcome-img-team'
-          src='./images/team.png'
-          alt=''
-        />
-      </div>
+      <Cover imageSrc={teamImage} />
 
       <div className='plain-text'>
         <h1>HELLO!</h1>

@@ -1,12 +1,12 @@
 import React from 'react'
 import MainLayout from '../layouts/Main'
+import flowserImage from '../public/images/flowser.png'
+import Cover from '../components/Cover'
 
 function Index() {
   return (
     <MainLayout>
-      <div className='page-welcome'>
-        <img className='page-welcome-img' src='./images/flowser.png' alt='' />
-      </div>
+      <Cover imageSrc={flowserImage} />
 
       <div className='presentation'>
         <div className='presentation-content-wrap'>
@@ -42,6 +42,7 @@ function Index() {
                 alt=''
               />
               <img
+                style={{ borderRadius: 10 }}
                 className='flowser-screen'
                 src='./images/presentation.png'
                 alt=''
