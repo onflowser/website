@@ -1,21 +1,27 @@
 import React from 'react'
-import Image from 'next/image'
+import Image, { ImageProps } from 'next/image'
 import MainLayout from '../layouts/Main'
 import Cover from '../components/Cover'
 
 // images
 import teamImage from '../public/images/team.svg'
-import jernejImage from '../public/images/jernej.svg'
-import bartImage from '../public/images/bartolomej.svg'
-import monikaImage from '../public/images/monika.svg'
+import jernejImage from '../public/images/jernej.png'
+import bartImage from '../public/images/bartolomej.png'
+import monikaImage from '../public/images/monika.png'
 import { PageMeta } from '../components/PageMeta'
 import { Parallax } from 'react-scroll-parallax'
 import { ParallaxProps } from 'react-scroll-parallax/dist/components/Parallax/types'
+import useResize from '../lib/use-resize'
 
 function About() {
+  const [width] = useResize()
+  const imageProps: Partial<ImageProps> = {
+    height: width < 500 ? 800 : 500,
+    objectFit: 'contain'
+  }
   const parallaxProps: ParallaxProps = {
     speed: 10,
-    scale: [0.9, 1.1]
+    scale: [0.8, 1]
   }
   return (
     <MainLayout>
@@ -36,7 +42,7 @@ function About() {
 
       <Parallax {...parallaxProps}>
         <div className='about-one-person'>
-          <Image src={jernejImage} alt="Jernej's avatar" />
+          <Image src={jernejImage} alt="Jernej's avatar" {...imageProps} />
           <h2>Jernej</h2>
           <p>
             <Link href='mailto:jernej.gololicic@gmail.com'>E-mail</Link> |{' '}
@@ -50,7 +56,7 @@ function About() {
 
       <Parallax {...parallaxProps}>
         <div className='about-one-person'>
-          <Image src={bartImage} alt="Bartolomej's avatar" />
+          <Image src={bartImage} alt="Bartolomej's avatar" {...imageProps} />
           <h2>Bartolomej</h2>
           <p>
             <Link href='mailto:bartolomej.kozorog@gmail.com'>E-mail</Link> |{' '}
@@ -62,7 +68,7 @@ function About() {
 
       <Parallax {...parallaxProps}>
         <div className='about-one-person'>
-          <Image src={monikaImage} alt="Monika's avatar" />
+          <Image src={monikaImage} alt="Monika's avatar" {...imageProps} />
           <h2>Monika</h2>
           <p>
             <Link href='mailto:monika.hribersek@gmail.com'>E-mail</Link> |{' '}
