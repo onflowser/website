@@ -13,7 +13,7 @@ import { Tweet, TwitterContextProvider } from 'react-static-tweets'
 import { NotionRenderer, Code, Collection, CollectionRow } from 'react-notion-x'
 
 // utils
-import { getBlockTitle } from 'notion-utils'
+import { getBlockTitle, parsePageId } from 'notion-utils'
 import { mapPageUrl, getCanonicalPageUrl } from 'lib/map-page-url'
 import { mapNotionImageUrl } from 'lib/map-image-url'
 import { getPageDescription } from 'lib/get-page-description'
@@ -23,7 +23,6 @@ import * as types from 'lib/types'
 import * as config from 'lib/config'
 
 // components
-import { CustomFont } from './CustomFont'
 import { Loading } from './Loading'
 import { Page404 } from './Page404'
 import { PageMeta } from './PageMeta'
@@ -32,6 +31,7 @@ import { PageSocial } from './PageSocial'
 import { ReactUtterances } from './ReactUtterances'
 
 import styles from './styles.module.css'
+import defaultBackgroundImage from '../public/images/cover-bg.png'
 import Cover from './Cover'
 import { isEmoji } from '../lib/utils'
 
@@ -99,15 +99,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   const title = getBlockTitle(block, recordMap) || site.name
 
-  console.log('notion page', {
-    isDev: config.isDev,
-    title,
-    pageId,
-    rootNotionPageId: site.rootNotionPageId,
-    recordMap,
-    block
-  })
-
   if (!config.isServer) {
     // add important objects to the window global for easy debugging
     const g = window as any
@@ -121,8 +112,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const canonicalPageUrl =
     !config.isDev && getCanonicalPageUrl(site, recordMap)(pageId)
 
-  // const isRootPage =
-  //   parsePageId(block.id) === parsePageId(site.rootNotionPageId)
+  const isRootPage =
+    parsePageId(block.id) === parsePageId(site.rootNotionPageId)
   const isBlogPost =
     block.type === 'page' && block.parent_table === 'collection'
   const showTableOfContents = !!isBlogPost
@@ -183,11 +174,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
         canonicalUrl={canonicalPageUrl}
       />
 
-      {/* <CustomFont site={site} /> */}
-
       <Cover
         title={title}
-        backgroundImageSrc={socialImage}
+        backgroundImageSrc={isRootPage ? defaultBackgroundImage : socialImage}
         icon={isEmojiIcon ? icon : <img alt='' src={icon} />}
       />
 
@@ -211,7 +200,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
             ...props
           }) => (
             <Link
-              href={href}
+              href={`/blog${href}`}
               as={as}
               passHref={passHref}
               prefetch={prefetch}

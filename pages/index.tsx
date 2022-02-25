@@ -5,10 +5,16 @@ import Cover from '../components/Cover'
 // images
 import flowserImage from '../public/images/flowser.svg'
 import { Parallax } from 'react-scroll-parallax'
+import { PageMeta } from '../components/PageMeta'
 
 function Index() {
   return (
     <MainLayout>
+      <PageMeta
+        title='Flowser - Flow GUI Browser'
+        description='Flowser (Stands for Flow Browser) is a convenient development tool for #Flow blockchain, which starts and indexes flow emulator or testnet blockchains 🤙.'
+      />
+
       <Cover foregroundImageSrc={flowserImage} />
 
       <div className='presentation'>
@@ -146,7 +152,7 @@ function Index() {
           </div>
 
           <div className='grey-white-content-right'>
-            <Parallax speed={20} scaleY={[0.7, 1.1]}>
+            <Parallax speed={10} scaleY={[0.7, 1.1]}>
               <img src='./images/geometric-zigzag.svg' alt='' />
             </Parallax>
           </div>

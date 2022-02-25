@@ -2,8 +2,8 @@ import React from 'react'
 import { domain } from 'lib/config'
 import { resolveNotionPage } from 'lib/resolve-notion-page'
 import { NotionPage } from 'components'
-import BlogLayout from '../layouts/Blog'
-import { PageMeta } from '../components/PageMeta'
+import BlogLayout from '../../layouts/Blog'
+import { PageMeta } from '../../components/PageMeta'
 
 export const getStaticProps = async () => {
   try {

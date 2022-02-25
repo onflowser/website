@@ -42,7 +42,7 @@ export default class MyDocument extends Document {
               name='viewport'
               content='width=device-width, initial-scale=1.0'
             />
-            <title>Flowser: FLOW GUI BROWSER</title>
+            <title>Flowser - Flow GUI Browser</title>
           </Head>
 
           <body>

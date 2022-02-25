@@ -10,7 +10,9 @@ function MainLayout({ children }: Props) {
   return (
     <>
       <Navigation />
-      <main style={{ position: 'relative' }}>{children}</main>
+      <main style={{ position: 'relative', minHeight: '70vh' }}>
+        {children}
+      </main>
       <Footer />
     </>
   )

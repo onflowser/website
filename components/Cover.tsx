@@ -1,7 +1,6 @@
 import React, { ReactElement } from 'react'
 import Image, { ImageProps } from 'next/image'
 import defaultBackgroundImage from '../public/images/cover-bg.png'
-import { Parallax } from 'react-scroll-parallax'
 
 type Props = {
   title?: string
