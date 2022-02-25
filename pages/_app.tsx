@@ -40,6 +40,7 @@ import { useRouter } from 'next/router'
 import { bootstrap } from 'lib/bootstrap-client'
 import { fathomId, fathomConfig } from 'lib/config'
 import * as Fathom from 'fathom-client'
+import { ParallaxProvider } from 'react-scroll-parallax'
 
 if (typeof window !== 'undefined') {
   bootstrap()
@@ -64,5 +65,9 @@ export default function App({ Component, pageProps }) {
     }
   }, [])
 
-  return <Component {...pageProps} />
+  return (
+    <ParallaxProvider>
+      <Component {...pageProps} />
+    </ParallaxProvider>
+  )
 }

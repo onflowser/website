@@ -1,5 +1,5 @@
 import React from 'react'
-import Image, { ImageProps } from 'next/image'
+import Image from 'next/image'
 import MainLayout from '../layouts/Main'
 import Cover from '../components/Cover'
 
@@ -9,8 +9,14 @@ import jernejImage from '../public/images/jernej.svg'
 import bartImage from '../public/images/bartolomej.svg'
 import monikaImage from '../public/images/monika.svg'
 import { PageMeta } from '../components/PageMeta'
+import { Parallax } from 'react-scroll-parallax'
+import { ParallaxProps } from 'react-scroll-parallax/dist/components/Parallax/types'
 
 function About() {
+  const parallaxProps: ParallaxProps = {
+    speed: 10,
+    scale: [0.9, 1.1]
+  }
   return (
     <MainLayout>
       <PageMeta
@@ -28,48 +34,47 @@ function About() {
         </h4>
       </div>
 
-      <div className='about-one-person'>
-        <Avatar src={jernejImage} alt="Jernej's avatar" />
-        <h2>Jernej</h2>
-        <p>
-          <Link href='mailto:jernej.gololicic@gmail.com'>E-mail</Link> |{' '}
-          <Link href='https://github.com/jgololicic'>Github</Link> |{' '}
-          <Link href='https://www.linkedin.com/in/jernej-gololi%C4%8Di%C4%8D-8a296925/'>
-            Linkedin
-          </Link>
-        </p>
-      </div>
+      <Parallax {...parallaxProps}>
+        <div className='about-one-person'>
+          <Image src={jernejImage} alt="Jernej's avatar" />
+          <h2>Jernej</h2>
+          <p>
+            <Link href='mailto:jernej.gololicic@gmail.com'>E-mail</Link> |{' '}
+            <Link href='https://github.com/jgololicic'>Github</Link> |{' '}
+            <Link href='https://www.linkedin.com/in/jernej-gololi%C4%8Di%C4%8D-8a296925/'>
+              Linkedin
+            </Link>
+          </p>
+        </div>
+      </Parallax>
 
-      <div className='about-one-person'>
-        <Avatar src={bartImage} alt="Bartolomej's avatar" />
-        <h2>Bartolomej</h2>
-        <p>
-          <Link href='mailto:bartolomej.kozorog@gmail.com'>E-mail</Link> |{' '}
-          <Link href='https://github.com/bartolomej'>Github</Link> |{' '}
-          <Link href='https://www.linkedin.com/in/bartolomej/'>Linkedin</Link>
-        </p>
-      </div>
+      <Parallax {...parallaxProps}>
+        <div className='about-one-person'>
+          <Image src={bartImage} alt="Bartolomej's avatar" />
+          <h2>Bartolomej</h2>
+          <p>
+            <Link href='mailto:bartolomej.kozorog@gmail.com'>E-mail</Link> |{' '}
+            <Link href='https://github.com/bartolomej'>Github</Link> |{' '}
+            <Link href='https://www.linkedin.com/in/bartolomej/'>Linkedin</Link>
+          </p>
+        </div>
+      </Parallax>
 
-      <div className='about-one-person'>
-        <Avatar src={monikaImage} alt="Monika's avatar" />
-        <h2>Monika</h2>
-        <p>
-          <Link href='mailto:monika.hribersek@gmail.com'>E-mail</Link> |{' '}
-          <Link href='https://github.com/monikaxh'>Github</Link> |{' '}
-          <Link href='https://www.linkedin.com/in/monikahribersek/'>
-            Linkedin
-          </Link>
-        </p>
-      </div>
+      <Parallax {...parallaxProps}>
+        <div className='about-one-person'>
+          <Image src={monikaImage} alt="Monika's avatar" />
+          <h2>Monika</h2>
+          <p>
+            <Link href='mailto:monika.hribersek@gmail.com'>E-mail</Link> |{' '}
+            <Link href='https://github.com/monikaxh'>Github</Link> |{' '}
+            <Link href='https://www.linkedin.com/in/monikahribersek/'>
+              Linkedin
+            </Link>
+          </p>
+        </div>
+      </Parallax>
     </MainLayout>
   )
-}
-
-type AvatarProps = ImageProps
-
-const Avatar = ({ ...rest }: AvatarProps) => {
-  // TODO: convert to png and use placeholder='blur'
-  return <Image {...rest} />
 }
 
 const Link = ({ href, children }) => {

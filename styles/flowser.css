@@ -353,6 +353,10 @@ p {
   max-width: 25px;
 }
 
+.social-icons a:hover {
+  transform: scale(1.1);
+}
+
 
 /* =============================================== ABOUT US vvvv */
 

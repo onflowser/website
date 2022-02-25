@@ -4,6 +4,7 @@ import Cover from '../components/Cover'
 
 // images
 import flowserImage from '../public/images/flowser.svg'
+import { Parallax } from 'react-scroll-parallax'
 
 function Index() {
   return (
@@ -14,11 +15,13 @@ function Index() {
         <div className='presentation-content-wrap'>
           <div className='title-with-image'>
             <h1>FLOW GUI BROWSER</h1>
-            <img
-              className='geometric-circle'
-              src='./images/geometric-circle.svg'
-              alt=''
-            />
+            <Parallax speed={10} translateX={[-20, 0]}>
+              <img
+                className='geometric-circle'
+                src='./images/geometric-circle.svg'
+                alt=''
+              />
+            </Parallax>
           </div>
           <div className='presentation-content'>
             <div className='presentation-content-text'>
@@ -38,17 +41,21 @@ function Index() {
             </div>
 
             <div className='image-with-graphic'>
-              <img
-                className='geometric-dots'
-                src='./images/geometric-dots.svg'
-                alt=''
-              />
-              <img
-                style={{ borderRadius: 10 }}
-                className='flowser-screen'
-                src='./images/presentation.png'
-                alt=''
-              />
+              <Parallax speed={10} translateX={[-20, 0]} translateY={[-10, 0]}>
+                <img
+                  className='geometric-dots'
+                  src='./images/geometric-dots.svg'
+                  alt=''
+                />
+              </Parallax>
+              <Parallax speed={5} scale={[0.9, 1.1]}>
+                <img
+                  style={{ borderRadius: 10 }}
+                  className='flowser-screen'
+                  src='./images/presentation.png'
+                  alt=''
+                />
+              </Parallax>
             </div>
           </div>
         </div>
@@ -139,7 +146,9 @@ function Index() {
           </div>
 
           <div className='grey-white-content-right'>
-            <img src='./images/geometric-zigzag.svg' alt='' />
+            <Parallax speed={20} scaleY={[0.7, 1.1]}>
+              <img src='./images/geometric-zigzag.svg' alt='' />
+            </Parallax>
           </div>
         </div>
       </div>
