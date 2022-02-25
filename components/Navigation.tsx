@@ -1,13 +1,20 @@
 import React, { ReactElement } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import useResize from '../lib/use-resize'
 
 function Navigation() {
+  const [width] = useResize()
+  const isSmall = width < 400
   return (
     <div className='nav-bar'>
       <Link href='/'>
         <a>
-          <img src='./images/logo_with_text.svg' alt='' />
+          <img
+            style={{ width: isSmall ? 80 : 200 }}
+            src={isSmall ? './images/logo.svg' : './images/logo_with_text.svg'}
+            alt=''
+          />
         </a>
       </Link>
       <div className='nav-bar-links'>

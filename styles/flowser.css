@@ -500,12 +500,7 @@ p {
     padding: 80px 50px 80px 50px;
   }
 
-  .nav-bar-links a {
-    font-size: 14px;
-  }
-
   .nav-bar-links {
-    max-width: 200px;
     padding-left: 20px;
     padding-right: 20px;
   }
@@ -513,13 +508,6 @@ p {
   .nav-bar img {
     max-width: 100%;
     padding-left: 20px;
-  }
-
-}
-
-@media (max-width: 370px) {
-  .nav-bar-links a {
-    font-size: 13px;
   }
 
 }

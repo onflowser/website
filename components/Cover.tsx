@@ -28,7 +28,9 @@ function Cover({
         className='page-welcome'
         style={{
           position: 'relative',
-          height: `${height}vh`
+          height: `${height}vh`,
+          paddingLeft: 50,
+          paddingRight: 50
         }}
       >
         <div
@@ -79,7 +81,7 @@ function Cover({
             >
               {icon}
             </span>
-            <h1>{title}</h1>
+            <h1 style={{ textAlign: 'center' }}>{title}</h1>
           </div>
         )}
       </div>
