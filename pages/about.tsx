@@ -17,7 +17,8 @@ function About() {
   const [width] = useResize()
   const imageProps: Partial<ImageProps> = {
     height: width < 500 ? 800 : 500,
-    objectFit: 'contain'
+    objectFit: 'contain',
+    placeholder: 'blur'
   }
   const parallaxProps: ParallaxProps = {
     speed: 10,
