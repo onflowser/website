@@ -36,33 +36,20 @@ import 'prismjs/components/prism-typescript'
 import 'prismjs/components/prism-bash'
 
 import React from 'react'
-import { useRouter } from 'next/router'
 import { bootstrap } from 'lib/bootstrap-client'
-import { fathomId, fathomConfig } from 'lib/config'
-import * as Fathom from 'fathom-client'
 import { ParallaxProvider } from 'react-scroll-parallax'
+import splitbee from '@splitbee/web'
 
 if (typeof window !== 'undefined') {
   bootstrap()
 }
 
 export default function App({ Component, pageProps }) {
-  const router = useRouter()
-
   React.useEffect(() => {
-    if (fathomId) {
-      Fathom.load(fathomId, fathomConfig)
-
-      function onRouteChangeComplete() {
-        Fathom.trackPageview()
-      }
-
-      router.events.on('routeChangeComplete', onRouteChangeComplete)
-
-      return () => {
-        router.events.off('routeChangeComplete', onRouteChangeComplete)
-      }
-    }
+    splitbee.init({
+      token: 'G2JDMZK05KYZ',
+      disableCookie: true
+    })
   }, [])
 
   return (
