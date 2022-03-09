@@ -95,7 +95,7 @@ p {
 }
 
 .nav-bar-links {
-  max-width: 350px;
+  max-width: 300px;
   width: 100%;
   display: flex;
   flex-direction: row;

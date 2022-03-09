@@ -19,11 +19,8 @@ function Navigation() {
       </Link>
       <div className='nav-bar-links'>
         <NavLink href='/about'>About us</NavLink>
-        <NavLink
-          target='_blank'
-          href='https://github.com/onflowser/flowser#-get-started'
-        >
-          Quick start
+        <NavLink target='_blank' href='https://docs.flowser.dev'>
+          Docs
         </NavLink>
         <NavLink href='/blog'>Blog</NavLink>
       </div>

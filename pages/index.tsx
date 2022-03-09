@@ -38,10 +38,7 @@ function Index() {
                 brings the world of transactions and blocks in beautiful colours
                 making it easy to understand.
               </h4>
-              <a
-                className='button'
-                href='https://github.com/onflowser/flowser#-get-started'
-              >
+              <a className='button' href='https://docs.flowser.dev'>
                 QUICK START
               </a>
             </div>
@@ -77,10 +74,7 @@ function Index() {
               just another scanner tool, it allows you to manage your local Flow
               network and inspect its state.
             </h4>
-            <a
-              className='button'
-              href='https://github.com/onflowser/flowser#-get-started'
-            >
+            <a className='button' href='https://docs.flowser.dev'>
               START FLOWSING NOW
             </a>
           </div>
