@@ -15,6 +15,10 @@
   color: var(--font-color)
 }
 
+.notion .notion-viewport {
+  z-index: -1;
+}
+
 .notion-page {
   padding-bottom: calc(max(5vh, 32px)) !important;
   line-height: 1.65;
