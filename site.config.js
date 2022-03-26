@@ -1,6 +1,10 @@
+const rootNotionPageId = process.env.ROOT_NOTION_PAGE_ID;
+
+console.log("Using ROOT_NOTION_PAGE_ID=" + rootNotionPageId)
+
 module.exports = {
   // where it all starts -- the site's root Notion page (required)
-  rootNotionPageId: process.env.ROOT_NOTION_PAGE_ID || 'add5e59f30464b439b107db96b53507c',
+  rootNotionPageId,
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
