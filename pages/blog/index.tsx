@@ -22,7 +22,7 @@ export const getStaticProps = async () => {
 export default function NotionDomainPage(props) {
   return (
     <BlogLayout>
-      <NotionPage {...props} />
+      <NotionPage {...props} renderMetadata={false} />
       <PageMeta
         title='Flowser - Blog'
         description='Here we document our journey while developing Flowser.'

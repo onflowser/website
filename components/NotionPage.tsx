@@ -70,12 +70,9 @@ const Modal = dynamic(
   { ssr: false }
 )
 
-export const NotionPage: React.FC<types.PageProps> = ({
-  site,
-  recordMap,
-  error,
-  pageId
-}) => {
+export const NotionPage: React.FC<
+  types.PageProps & { renderMetadata: boolean }
+> = ({ site, recordMap, error, pageId, renderMetadata = true }) => {
   const router = useRouter()
   const lite = useSearchParam('lite')
 
@@ -164,15 +161,17 @@ export const NotionPage: React.FC<types.PageProps> = ({
         }
       }}
     >
-      <PageMeta
-        title={title}
-        description={site.description}
-        socialDescription={socialDescription}
-        name={site.name}
-        domain={site.domain}
-        image={socialImage}
-        canonicalUrl={canonicalPageUrl}
-      />
+      {renderMetadata && (
+        <PageMeta
+          title={title}
+          description={site.description}
+          socialDescription={socialDescription}
+          name={site.name}
+          domain={site.domain}
+          image={socialImage}
+          canonicalUrl={canonicalPageUrl}
+        />
+      )}
 
       <Cover
         title={title}
