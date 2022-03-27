@@ -46,10 +46,12 @@ if (typeof window !== 'undefined') {
 
 export default function App({ Component, pageProps }) {
   React.useEffect(() => {
-    splitbee.init({
-      token: 'G2JDMZK05KYZ',
-      disableCookie: true
-    })
+    if (process.env.NEXT_ENABLE_ANALYTICS) {
+      splitbee.init({
+        token: 'G2JDMZK05KYZ',
+        disableCookie: true
+      })
+    }
   }, [])
 
   return (
