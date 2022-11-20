@@ -76,6 +76,10 @@ function Index() {
               >
                 Download for {platform}
               </Button>
+              <SizedBox height={theme.spacing.md} />
+              <ReleaseLink href={latestRelease?.url}>
+                {latestRelease?.tagName ?? '-'}
+              </ReleaseLink>
             </InstallMethod>
           </div>
         )}
@@ -126,6 +130,10 @@ const InstallMethod = styled.div`
 
 const OrText = styled.div`
   color: ${(props) => props.theme.color.grey};
+`
+
+const ReleaseLink = styled(ExternalLink)`
+  color: ${(props) => props.theme.color.grey} !important;
 `
 
 export default Index

@@ -1,16 +1,13 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
 import styled from '@emotion/styled'
 
-export type ExternalLinkProps = {
-  children: ReactElement | string
-  href: string
-}
+export type ExternalLinkProps = React.DetailedHTMLProps<
+  React.AnchorHTMLAttributes<HTMLAnchorElement>,
+  HTMLAnchorElement
+>
+
 export function ExternalLink(props: ExternalLinkProps) {
-  return (
-    <Container target='_blank' href={props.href}>
-      {props.children}
-    </Container>
-  )
+  return <Container target='_blank' {...props} />
 }
 
 const Container = styled.a`
