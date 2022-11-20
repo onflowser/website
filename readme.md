@@ -1,12 +1,7 @@
 <div align="center">
-	<br>
-	<img alt="Flowser logo" src="public/images/logo.svg" width="150" height="150">
-	<h1>flowser.dev</h1>
-	<p>
-		<b>Easily start you local Flow network & inspect the state.</b>
-	</p>
-	<br>
-	<br>
+	<img alt="Flowser banner" src="https://user-images.githubusercontent.com/36109955/196263054-b42ecb52-340f-4982-bd62-404acb161d71.gif" />
+	<br />
+	<br />
 </div>
 
 This repository was forked and adapted from [transitive-bullshit/nextjs-notion-starter-kit](https://github.com/transitive-bullshit/nextjs-notion-starter-kit).
