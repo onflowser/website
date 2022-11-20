@@ -28,7 +28,7 @@ function Index() {
       />
 
       <LandingSection>
-        <SizedBox height={theme.spacing.xl} />
+        <SizedBox height={theme.spacing.lg} />
 
         <Title>
           Supercharged development <FlowHashTag>#onFlow</FlowHashTag>{' '}

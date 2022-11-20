@@ -28,6 +28,7 @@ const Root = styled.div`
   background: ${(props) => props.theme.color.dark};
   position: relative;
   min-height: 100vh;
+  overflow: hidden;
 `
 
 const Background = styled.img`

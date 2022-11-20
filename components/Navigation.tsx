@@ -31,7 +31,7 @@ function Navigation() {
 const Container = styled.nav`
   display: flex;
   justify-content: space-between;
-  height: 5vh;
+  padding: ${(props) => props.theme.spacing.lg} 0;
 `
 
 const LeftSide = styled.div`
