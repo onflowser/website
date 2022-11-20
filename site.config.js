@@ -1,4 +1,4 @@
-const rootNotionPageId = process.env.ROOT_NOTION_PAGE_ID;
+const rootNotionPageId = process.env.ROOT_NOTION_PAGE_ID ?? "27530080e7ce4d2e8f550cd25b66eb29";
 
 console.log("Using ROOT_NOTION_PAGE_ID=" + rootNotionPageId)
 
@@ -40,7 +40,7 @@ module.exports = {
 
   // whether or not to enable support for LQIP preview images (optional)
   // NOTE: this requires you to set up Google Firebase and add the environment
-  // variables specified in .env.example
+  // variables specified in .env.local.example
   isPreviewImageSupportEnabled: false,
 
   // map of notion page IDs to URL paths (optional)

@@ -31,7 +31,6 @@ import { PageSocial } from './PageSocial'
 import { ReactUtterances } from './ReactUtterances'
 
 import styles from './styles.module.css'
-import defaultBackgroundImage from '../public/images/cover-bg.png'
 import Cover from './Cover'
 import { isEmoji } from '../lib/utils'
 
@@ -154,6 +153,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
     pageAside = <PageSocial />
   }
 
+  const coverBackgroundImage = isRootPage ? undefined : socialImage
+
   return (
     <TwitterContextProvider
       value={{
@@ -174,11 +175,13 @@ export const NotionPage: React.FC<types.PageProps> = ({
         canonicalUrl={canonicalPageUrl}
       />
 
-      <Cover
-        title={title}
-        backgroundImageSrc={isRootPage ? defaultBackgroundImage : socialImage}
-        icon={isEmojiIcon ? icon : <img alt='' src={icon} />}
-      />
+      {coverBackgroundImage && (
+        <Cover
+          title={title}
+          backgroundImageSrc={coverBackgroundImage}
+          icon={isEmojiIcon ? icon : <img alt='' src={icon} />}
+        />
+      )}
 
       {isLiteMode && <BodyClassName className='notion-lite' />}
 
