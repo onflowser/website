@@ -3,20 +3,23 @@ import styled from '@emotion/styled'
 import { SizedBox } from './SizedBox'
 import { theme } from '../styles/theme'
 import { useGithub } from '../lib/use-github'
+import { ExternalLink } from './ExternalLink'
 
 export const Footer = () => {
   const { latestRelease } = useGithub()
   return (
     <Container>
+      <SizedBox height={theme.spacing.xl} />
+
       <a href='https://flowser.dev/'>
-        <img src='/images/logo_big.png' alt='' />
+        <Logo src='/images/logo_big.png' alt='' />
       </a>
       <SizedBox height={theme.spacing.md} />
 
       <Version>
-        <a target='_blank' href={latestRelease?.url}>
+        <ExternalLink href={latestRelease?.url}>
           {latestRelease?.tagName ?? '-'}
-        </a>
+        </ExternalLink>
       </Version>
 
       <SizedBox height={theme.spacing.lg} />
@@ -47,4 +50,8 @@ const Container = styled.footer`
 
 const Version = styled.div`
   color: ${(props) => props.theme.color.grey};
+`
+
+const Logo = styled.img`
+  max-width: 200px;
 `

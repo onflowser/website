@@ -6,28 +6,52 @@ declare module '@emotion/react' {
       sm: string
       md: string
       lg: string
+      xl: string
     }
     color: {
       dark: string
       grey: string
+      darkGrey: string
+      black: string
       light: string
       flow: string
       gold: string
+    }
+    fontSize: {
+      sm: string
+      md: string
+      big: string
+    }
+    radius: {
+      sm: string
+      md: string
     }
   }
 }
 
 export const theme: Theme = {
   spacing: {
-    sm: '10px',
+    sm: '12px',
     md: '20px',
-    lg: '50px'
+    lg: '40px',
+    xl: '60px'
   },
   color: {
     dark: '#19202e',
+    black: '#000000',
     light: '#FFFFFF',
     grey: '#FFFFFFB2',
+    darkGrey: '#59678352',
     flow: '#16FF99',
     gold: '#FFDD6266'
+  },
+  fontSize: {
+    sm: '14px',
+    md: '18px',
+    big: '55px'
+  },
+  radius: {
+    sm: '7px',
+    md: '10px'
   }
 }

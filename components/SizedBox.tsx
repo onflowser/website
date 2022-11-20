@@ -9,7 +9,7 @@ export type SizedBoxProps = {
 export function SizedBox({ width, height, inline = false }: SizedBoxProps) {
   return (
     <div
-      style={{ width, height, display: inline ? 'inline-block' : 'unset' }}
+      style={{ width, height, display: inline ? 'inline-block' : 'block' }}
     ></div>
   )
 }
