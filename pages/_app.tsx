@@ -38,12 +38,14 @@ import React from 'react'
 import { bootstrap } from 'lib/bootstrap-client'
 import { ParallaxProvider } from 'react-scroll-parallax'
 import splitbee from '@splitbee/web'
+import { ThemeProvider } from '@emotion/react'
+import { theme } from '../styles/theme'
 
 if (typeof window !== 'undefined') {
   bootstrap()
 }
 
-export default function App({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   React.useEffect(() => {
     splitbee.init({
       token: 'G2JDMZK05KYZ',
@@ -53,7 +55,11 @@ export default function App({ Component, pageProps }) {
 
   return (
     <ParallaxProvider>
-      <Component {...pageProps} />
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
     </ParallaxProvider>
   )
 }
+
+export default App

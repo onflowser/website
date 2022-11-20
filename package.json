@@ -28,6 +28,8 @@
     "posttest": "run-s build"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
     "@google-cloud/firestore": "^4.10.1",
     "@splitbee/web": "^0.3.0",
     "classnames": "^2.3.1",
@@ -40,6 +42,7 @@
     "notion-client": "^4.10.0",
     "notion-types": "^4.10.0",
     "notion-utils": "^4.10.0",
+    "octokit": "^2.0.10",
     "p-map": "^4.0.0",
     "p-memoize": "^4.0.0",
     "react": "^17.0.2",
