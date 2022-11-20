@@ -16,7 +16,7 @@ export const PageMeta: React.FC<Props> = ({
   title,
   description,
   socialDescription,
-  image = '/images/banner.png',
+  image = '/social.gif',
   canonicalUrl = 'https://flowser.dev',
   name = 'Flowser',
   domain = 'https://flowser.dev'

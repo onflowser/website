@@ -23,8 +23,8 @@ function Index() {
   return (
     <MainLayout>
       <PageMeta
-        title='Flowser - Flow GUI Browser'
-        description='Flowser (Stands for Flow Browser) is a convenient development tool for #Flow blockchain, which starts and indexes flow emulator or testnet blockchains 🤙.'
+        title='Flowser - Supercharged development #onFlow blockchain'
+        description='Flowser is first-of-its-kind development tool for Flow blockchain. It does the heavy work of managing blockchain emulator, inspecting the current state, interacting with the network and much more!'
       />
 
       <LandingSection>
