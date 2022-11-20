@@ -1,11 +1,12 @@
 import React, { ReactElement } from 'react'
 import Image, { ImageProps } from 'next/image'
+import defaultBackgroundImage from '../public/images/cover-bg.png'
 
 type Props = {
   title?: string
   icon?: string | ReactElement
   foregroundImageSrc?: string | ImageProps['src']
-  backgroundImageSrc: string | ImageProps['src']
+  backgroundImageSrc?: string | ImageProps['src']
   height?: number // height in vh units
 }
 
@@ -14,7 +15,7 @@ function Cover({
   icon,
   height = 40,
   foregroundImageSrc,
-  backgroundImageSrc
+  backgroundImageSrc = defaultBackgroundImage
 }: Props) {
   const offset = 0.4
   return (

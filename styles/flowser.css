@@ -1,0 +1,525 @@
+:root {
+
+  /* =============================================== COLORS */
+  --main-yellow-color: #E8A165;
+  --light-violet-color: #B2AFE8;
+  --light-blue-color: #B6D0F2;
+  --background-color: #F4F4F4;
+  --font-color: #222222;
+  --dark-blue-color: #141C2D;
+  --green-color: #33F8A6;
+
+
+  /* =============================================== GENERAL */
+
+}
+
+body {
+  margin: 0 auto !important;
+  color: var(--font-color);
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-size: 50px;
+  font-family: futura-pt, sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  letter-spacing: 0.02em;
+}
+
+h4 {
+  font-size: 18px;
+  font-family: futura-pt, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 1.8em;
+}
+
+p {
+  font-size: 14px;
+  font-family: futura-pt, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.8em;
+}
+
+.button {
+  text-decoration: none;
+  font-family: futura-pt, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 14px;
+  color: var(--dark-blue-color);
+  border: solid 3px var(--dark-blue-color);
+  border-radius: 3px;
+  padding: 15px 50px 15px 50px;
+}
+
+.button:hover {
+  color: var(--main-yellow-color);
+  border: solid 3px var(--main-yellow-color);
+}
+
+/* =============================================== NAVBAR */
+
+
+.nav-bar {
+  max-width: 1240px;
+  width: 100%;
+  height: 100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-bar * {
+  /* Needs high z-index, so that it doesn't render bellow notion-viewport */
+  z-index: 10;
+}
+
+.nav-bar a {
+  cursor: pointer;
+}
+
+.nav-bar img {
+  width: 200px;
+  max-width: 100%;
+  padding-left: 50px;
+}
+
+.nav-bar-links {
+  max-width: 300px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-right: 50px;
+}
+
+.nav-bar-link__current * {
+  color: var(--light-violet-color) !important;
+}
+
+.nav-bar-links a {
+  text-decoration: none;
+  font-family: futura-pt, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: var(--font-color);
+  font-size: 18px;
+}
+
+.nav-bar-links a:hover {
+  color: var(--light-violet-color);
+}
+
+.active {
+  color: var(--light-violet-color) !important;
+}
+
+
+/* =============================================== INDEX */
+
+
+.page-welcome {
+  width: 100%;
+  height: 40vh;
+  margin: 0 auto;
+  background-image: url("/public/images/cover-bg.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-welcome-img {
+  /*max-width: 1240px;*/
+  /*width: 80%;*/
+  padding-left: 150px;
+  padding-right: 150px;
+}
+
+.presentation {
+  margin-top: -8px;
+  background: rgb(202, 209, 251);
+  background: linear-gradient(34deg, rgba(202, 209, 251, 1) 0%, rgba(255, 255, 255, 1) 100%);
+  z-index: -100;
+}
+
+.presentation-content-wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 80px 50px 150px 50px;
+}
+
+.geometric-circle {
+  max-width: 150px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.title-with-image h1 {
+  position: absolute;
+  z-index: 1;
+}
+
+.title-with-image img {
+  position: absolute;
+  z-index: 0;
+}
+
+.presentation-content {
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.presentation-content-text {
+  max-width: 35%;
+  padding-right: 50px;
+}
+
+.h4-margin {
+  margin-bottom: 50px;
+}
+
+.flowser-screen {
+  margin-top: 80px;
+  max-width: 600px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.geometric-dots {
+  position: absolute;
+  z-index: 0;
+  margin-top: 313px;
+  margin-left: -60px;
+}
+
+.benefits {
+  background-color: var(--dark-blue-color);
+  color: #fff;
+}
+
+.benefits-wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 120px 50px 100px 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.benefits-wrap h2 {
+  color: #fff;
+  font-family: futura-pt, sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 40px;
+}
+
+.benefits-wrap h4 {
+  color: #fff;
+}
+
+.benefits .button {
+  border-color: #B2AFE8;
+  color: #B2AFE8;
+}
+
+.benefits .button:hover {
+  border-color: var(--green-color);
+  color: var(--green-color);
+}
+
+.benefits-left {
+  max-width: 40%;
+}
+
+.benefits-right {
+  max-width: 40%;
+}
+
+.benefits-right-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.benefits-right-box-text {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+}
+
+.benefits-right-box-text h3 {
+  font-family: futura-pt, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  letter-spacing: 0.025em;
+}
+
+.benefits-right-box-text p {
+  font-family: futura-pt, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5em;
+  margin-top: 10px;
+}
+
+.grey-white {
+  background-color: var(--background-color);
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.grey-white-wraper {
+  background-color: #fff;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 80px 100px 80px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.grey-white h2 {
+  font-family: futura-pt, sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 60px;
+  margin: 0px;
+}
+
+.grey-white p {
+  max-width: 85%;
+  font-size: 16px;
+}
+
+.grey-white-content-right img {
+  max-width: 100px;
+}
+
+
+/* =============================================== FOOTER */
+
+
+.footer {
+  background-color: var(--dark-blue-color);
+  padding-top: 50px;
+  padding-bottom: 50px;
+  width: 100%;
+}
+
+.footer-content {
+  margin: 0 auto;
+  max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-footer {
+  padding-bottom: 20px;
+}
+
+.social-icons {
+  max-width: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.social-icons img {
+  max-width: 25px;
+}
+
+.social-icons a:hover {
+  transform: scale(1.1);
+}
+
+
+/* =============================================== ABOUT US vvvv */
+
+
+.page-welcome-img-team {
+  max-width: 41%;
+}
+
+.plain-text, .plain-text-no-margin {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 150px;
+  margin-bottom: 100px;
+}
+
+.about-one-person {
+  max-width: 100%;
+  padding-left: 50px;
+  padding-right: 50px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 80px;
+}
+
+.about-one-person h2 {
+  font-family: futura-pt, sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 30px;
+  margin: 10px 0 0;
+}
+
+.about-one-person img {
+  margin-bottom: 30px;
+  max-width: 700px;
+  width: 100%;
+}
+
+.about-one-person a {
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.about-one-person a:hover {
+  text-decoration: none;
+  color: var(--main-yellow-color) !important;
+}
+
+.about-one-person a:visited {
+  text-decoration: none;
+}
+
+
+@media (max-width: 1000px) {
+  .flowser-screen {
+    margin-top: 120px;
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .geometric-dots {
+    position: absolute;
+    z-index: 0;
+    margin-top: 313px;
+    margin-left: -60px;
+  }
+
+}
+
+@media (max-width: 900px) {
+  .presentation-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .presentation-content-text {
+    max-width: 100%;
+    padding-right: 0px;
+  }
+
+  .image-with-graphic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .geometric-dots {
+    display: none;
+  }
+
+}
+
+@media (max-width: 750px) {
+  .benefits-wrap {
+    flex-direction: column;
+  }
+
+  .benefits-left {
+    max-width: 100%;
+    margin-bottom: 120px;
+  }
+
+  .benefits-right {
+    max-width: 100%;
+  }
+
+  .grey-white-content-left h2 {
+    font-size: 40px;
+  }
+
+  .plain-text, .plain-text-no-margin {
+    margin-top: 50px;
+  }
+}
+
+@media (max-width: 600px) {
+  .grey-white-wraper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .grey-white-wraper p {
+    max-width: 100%;
+  }
+
+  .grey-white-wraper img {
+    transform: rotate(90deg);
+  }
+}
+
+
+@media (max-width: 588px) {
+  .title-with-image {
+    margin-right: 50px;
+    margin-bottom: 60px;
+    line-height: 3em;
+  }
+
+  .grey-white-wraper {
+    padding: 80px 50px 80px 50px;
+  }
+
+  .nav-bar-links {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .nav-bar img {
+    max-width: 100%;
+    padding-left: 20px;
+  }
+
+}
+
+
+@media (max-width: 344px) {
+  .title-with-image h1 {
+    font-size: 40px;
+  }
+
+}

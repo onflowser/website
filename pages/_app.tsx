@@ -1,5 +1,6 @@
 // global styles shared across the entire site
 import 'styles/global.css'
+import 'styles/flowser.css'
 
 // core styles shared by all of react-notion-x (required)
 import 'react-notion-x/src/styles.css'
@@ -38,14 +39,12 @@ import React from 'react'
 import { bootstrap } from 'lib/bootstrap-client'
 import { ParallaxProvider } from 'react-scroll-parallax'
 import splitbee from '@splitbee/web'
-import { ThemeProvider } from '@emotion/react'
-import { theme } from '../styles/theme'
 
 if (typeof window !== 'undefined') {
   bootstrap()
 }
 
-function App({ Component, pageProps }) {
+export default function App({ Component, pageProps }) {
   React.useEffect(() => {
     splitbee.init({
       token: 'G2JDMZK05KYZ',
@@ -55,11 +54,7 @@ function App({ Component, pageProps }) {
 
   return (
     <ParallaxProvider>
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <Component {...pageProps} />
     </ParallaxProvider>
   )
 }
-
-export default App

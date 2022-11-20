@@ -1,53 +1,32 @@
 import React, { ReactElement } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import styled from '@emotion/styled'
-import { SizedBox } from './SizedBox'
-import { theme } from '../styles/theme'
+import useResize from '../lib/use-resize'
 
 function Navigation() {
+  const [width] = useResize()
+  const isSmall = width < 400
   return (
-    <Container>
-      <LeftSide>
-        <Link href='/'>
-          <a>
-            <Logo src='/images/logo_big.png' alt='' />
-          </a>
-        </Link>
-      </LeftSide>
-      <RightSide>
+    <div className='nav-bar'>
+      <Link href='/'>
+        <a>
+          <img
+            style={{ width: isSmall ? 80 : 200 }}
+            src={isSmall ? './images/logo.svg' : './images/logo_with_text.svg'}
+            alt=''
+          />
+        </a>
+      </Link>
+      <div className='nav-bar-links'>
         <NavLink href='/about'>About us</NavLink>
-        <SizedBox width={theme.spacing.md} />
         <NavLink target='_blank' href='https://docs.flowser.dev'>
           Docs
         </NavLink>
-        <SizedBox width={theme.spacing.md} />
         <NavLink href='/blog'>Blog</NavLink>
-      </RightSide>
-    </Container>
+      </div>
+    </div>
   )
 }
-
-const Container = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  padding: ${(props) => props.theme.spacing.lg} 0;
-`
-
-const LeftSide = styled.div`
-  display: flex;
-  align-items: center;
-`
-
-const RightSide = styled.div`
-  display: flex;
-  align-items: center;
-  color: ${(props) => props.theme.color.grey};
-`
-
-const Logo = styled.img`
-  height: 30px;
-`
 
 type NavLinkProps = {
   href: string
