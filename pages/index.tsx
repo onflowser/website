@@ -14,7 +14,7 @@ import { useGithub } from '../lib/use-github'
 
 function Index() {
   const { latestRelease } = useGithub()
-  const [platform, setPlatform] = useState<OsPlatformName>('Linux')
+  const [platform, setPlatform] = useState<OsPlatformName>('MacOS')
 
   useEffect(() => {
     setPlatform(getPlatformName())

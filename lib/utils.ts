@@ -9,12 +9,14 @@ export type OsPlatformName = 'MacOS' | 'Windows' | 'Linux'
 
 export function getPlatformName(): OsPlatformName {
   const { platform } = window.navigator
-  switch (platform) {
-    case 'MacIntel':
+  switch (true) {
+    case platform.includes('Mac'):
       return 'MacOS'
-    case 'Win32':
+    case platform.includes('Win'):
       return 'Windows'
-    default:
+    case platform.includes('Linux'):
       return 'Linux'
+    default:
+      return 'MacOS'
   }
 }
