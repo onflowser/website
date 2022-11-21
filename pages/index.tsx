@@ -119,6 +119,19 @@ const FlowHashTag = styled.span`
 const FlowLogo = styled.img`
   vertical-align: middle;
   height: 50px;
+  animation: 3s ease-in-out infinite float;
+
+  @keyframes float {
+    0% {
+      transform: translateY(5px);
+    }
+    50% {
+      transform: translateY(-10px) scale(1.1);
+    }
+    100% {
+      transform: translateY(5px);
+    }
+  }
 `
 
 const InstallMethod = styled.div`
