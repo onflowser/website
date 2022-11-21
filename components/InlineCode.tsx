@@ -19,7 +19,7 @@ export function InlineCode(props: InlineCodeProps) {
     if (isCopied) {
       timeoutRef.current = setTimeout(() => {
         setCopied(false)
-      }, 1000)
+      }, 3000)
     }
   }, [isCopied])
 

@@ -4,6 +4,10 @@ import { useRouter } from 'next/router'
 import styled from '@emotion/styled'
 import { SizedBox } from './SizedBox'
 import { theme } from '../styles/theme'
+import { ExternalLink } from './ExternalLink'
+
+// TODO: Enable when those sites are updated
+const showDocsAndBlogLinks = false
 
 function Navigation() {
   return (
@@ -16,13 +20,23 @@ function Navigation() {
         </Link>
       </LeftSide>
       <RightSide>
-        <NavLink href='/about'>About us</NavLink>
+        {showDocsAndBlogLinks && (
+          <>
+            <NavLink target='_blank' href='https://docs.flowser.dev'>
+              Docs
+            </NavLink>
+            <SizedBox width={theme.spacing.md} />
+            <NavLink href='/blog'>Blog</NavLink>
+          </>
+        )}
+        <SizedBox width={theme.spacing.lg} />
+        <ExternalLink href='https://twitter.com/onflowser'>
+          <img src='/images/twitter.svg' alt='' />
+        </ExternalLink>
         <SizedBox width={theme.spacing.md} />
-        <NavLink target='_blank' href='https://docs.flowser.dev'>
-          Docs
-        </NavLink>
-        <SizedBox width={theme.spacing.md} />
-        <NavLink href='/blog'>Blog</NavLink>
+        <ExternalLink href='https://github.com/onflowser/flowser'>
+          <img src='/images/git.svg' alt='' />
+        </ExternalLink>
       </RightSide>
     </Container>
   )

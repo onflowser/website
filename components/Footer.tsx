@@ -2,6 +2,7 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 import { SizedBox } from './SizedBox'
 import { theme } from '../styles/theme'
+import { ExternalLink } from './ExternalLink'
 
 export const Footer = () => {
   return (
@@ -15,17 +16,17 @@ export const Footer = () => {
       <SizedBox height={theme.spacing.lg} />
 
       <div>
-        <a href='https://twitter.com/onflowser' target='_blank'>
+        <ExternalLink href='https://twitter.com/onflowser'>
           <img src='/images/twitter.svg' alt='' />
-        </a>
+        </ExternalLink>
         <SizedBox width={theme.spacing.sm} inline />
-        <a href='mailto:info.flowser@gmail.com' target='_blank'>
+        <ExternalLink href='mailto:info.flowser@gmail.com'>
           <img src='/images/email.svg' alt='' />
-        </a>
+        </ExternalLink>
         <SizedBox width={theme.spacing.sm} inline />
-        <a href='https://github.com/onflowser/flowser' target='_blank'>
+        <ExternalLink href='https://github.com/onflowser/flowser'>
           <img src='/images/git.svg' alt='' />
-        </a>
+        </ExternalLink>
       </div>
     </Container>
   )
