@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-export const Button = styled.button`
+export const PrimaryLink = styled.a`
   border: none;
   outline: none;
   cursor: pointer;
@@ -8,12 +8,12 @@ export const Button = styled.button`
   background: ${(props) => props.theme.color.gold};
   color: ${(props) => props.theme.color.black};
   font-size: ${(props) => props.theme.fontSize.sm};
-  padding: ${({ theme }) => `${theme.spacing.sm} ${theme.spacing.lg}`};
+  padding: ${({ theme }) => `${theme.spacing.sm} ${theme.spacing.md}`};
   width: fit-content;
   display: flex;
   justify-content: center;
   transition: 0.2s ease-in-out all;
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 `

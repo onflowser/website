@@ -5,7 +5,7 @@ import MainLayout from '../layouts/Main'
 import { PageMeta } from '../components/PageMeta'
 import styled from '@emotion/styled'
 import { InlineCode } from '../components/InlineCode'
-import { Button } from '../components/Button'
+import { PrimaryLink } from '../components/PrimaryLink'
 import { SizedBox } from '../components/SizedBox'
 import { theme } from '../styles/theme'
 import { getPlatformName, OsPlatformName } from '../lib/utils'
@@ -15,12 +15,66 @@ import { FeatureShowcase } from '../components/FeatureShowcase'
 import { Section } from '../components/Section'
 
 function Index() {
-  const { latestRelease } = useGithub()
+  const { latestRelease, winAsset, macArmAsset, macX64Asset } = useGithub()
   const [platform, setPlatform] = useState<OsPlatformName>('MacOS')
 
   useEffect(() => {
     setPlatform(getPlatformName())
   }, [])
+
+  function renderDownloadOptions() {
+    if (platform === 'Linux') {
+      return (
+        <div>
+          <Notice>🚧 Linux is currently not yet supported. 🚧</Notice>
+          <Notice>
+            If you would benefit from adding Linux support, tell us here:{' '}
+            <ExternalLink href='https://github.com/onflowser/flowser/discussions/142'>
+              github.com/onflowser/flowser/discussions/142
+            </ExternalLink>
+          </Notice>
+        </div>
+      )
+    }
+
+    return (
+      <div>
+        <InstallMethod>
+          Run with Flow CLI
+          <SizedBox height={theme.spacing.sm} />
+          <InlineCode>flow flowser</InlineCode>
+        </InstallMethod>
+
+        <SizedBox height={theme.spacing.md} />
+        <OrText>or</OrText>
+        <SizedBox height={theme.spacing.md} />
+
+        <InstallMethod>
+          Download directly
+          <SizedBox height={theme.spacing.sm} />
+          {platform === 'Windows' ? (
+            <PrimaryLink href={winAsset?.browser_download_url} download>
+              Download for Windows
+            </PrimaryLink>
+          ) : (
+            <div style={{ display: 'flex' }}>
+              <PrimaryLink href={macArmAsset?.browser_download_url} download>
+                Download for Apple Silicon
+              </PrimaryLink>
+              <SizedBox width={10} />
+              <PrimaryLink href={macX64Asset?.browser_download_url} download>
+                Download for Apple Intel
+              </PrimaryLink>
+            </div>
+          )}
+          <SizedBox height={theme.spacing.md} />
+          <ReleaseLink href={latestRelease?.url}>
+            {latestRelease?.tagName ?? '-'}
+          </ReleaseLink>
+        </InstallMethod>
+      </div>
+    )
+  }
 
   return (
     <MainLayout>
@@ -46,45 +100,7 @@ function Index() {
 
         <SizedBox height={theme.spacing.xl} />
 
-        {platform === 'Linux' ? (
-          <div>
-            <Notice>🚧 Linux is currently not yet supported. 🚧</Notice>
-            <Notice>
-              If you would benefit from adding Linux support, tell us here:{' '}
-              <ExternalLink href='https://github.com/onflowser/flowser/discussions/142'>
-                github.com/onflowser/flowser/discussions/142
-              </ExternalLink>
-            </Notice>
-          </div>
-        ) : (
-          <div>
-            <InstallMethod>
-              Run with Flow CLI
-              <SizedBox height={theme.spacing.sm} />
-              <InlineCode>flow flowser</InlineCode>
-            </InstallMethod>
-
-            <SizedBox height={theme.spacing.md} />
-            <OrText>or</OrText>
-            <SizedBox height={theme.spacing.md} />
-
-            <InstallMethod>
-              Download directly
-              <SizedBox height={theme.spacing.sm} />
-              <Button
-                onClick={() => {
-                  window.open(latestRelease.url, '_blank')
-                }}
-              >
-                Download for {platform}
-              </Button>
-              <SizedBox height={theme.spacing.md} />
-              <ReleaseLink href={latestRelease?.url}>
-                {latestRelease?.tagName ?? '-'}
-              </ReleaseLink>
-            </InstallMethod>
-          </div>
-        )}
+        {renderDownloadOptions()}
       </LandingSection>
 
       <SizedBox height={theme.spacing.lg} />
