@@ -13,4 +13,8 @@ export function ExternalLink(props: ExternalLinkProps) {
 const Container = styled.a`
   color: ${(props) => props.theme.color.light};
   text-decoration: underline;
+  transition: 0.2s ease-in-out all;
+  &:hover {
+    transform: scale(1.1);
+  }
 `
