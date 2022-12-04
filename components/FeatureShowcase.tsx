@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { SizedBox } from './SizedBox'
 import { useWindowSize } from 'react-use'
 import { getPixelValue, theme } from '../styles/theme'
@@ -14,7 +14,11 @@ export type FeatureShowcaseProps = {
 
 export function FeatureShowcase(props: FeatureShowcaseProps) {
   const { width } = useWindowSize()
-  const isMobile = width <= getPixelValue(theme.breakpoints.mobile)
+  const [isMobile, setMobile] = useState(false)
+
+  useEffect(() => {
+    setMobile(width <= getPixelValue(theme.breakpoints.mobile))
+  }, [width])
 
   if (props.imageOnRight || isMobile) {
     return (
