@@ -20,10 +20,14 @@ declare module '@emotion/react' {
     fontSize: {
       sm: string
       md: string
+      lg: string
       big: string
     }
     radius: {
       sm: string
+      md: string
+    }
+    lineHeight: {
       md: string
     }
   }
@@ -48,10 +52,14 @@ export const theme: Theme = {
   fontSize: {
     sm: '14px',
     md: '18px',
+    lg: '36px',
     big: '55px'
   },
   radius: {
     sm: '7px',
     md: '10px'
+  },
+  lineHeight: {
+    md: '26px'
   }
 }
