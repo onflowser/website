@@ -7,9 +7,28 @@ export type FeatureShowcaseProps = {
   description: string
   imageSrc: string
   iconSrc: string
+  imageOnRight?: boolean
 }
 
 export function FeatureShowcase(props: FeatureShowcaseProps) {
+  if (props.imageOnRight) {
+    return (
+      <Container>
+        <SizedBox width={50} />
+        <Background style={{ transform: 'scaleX(-1)' }} />
+        <RightSide>
+          <Icon src={props.iconSrc} />
+          <Title>{props.title}</Title>
+          <Description>{props.description}</Description>
+        </RightSide>
+        <SizedBox width={30} />
+        <LeftSide>
+          <Image alt={props.title} src={props.imageSrc} />
+        </LeftSide>
+      </Container>
+    )
+  }
+
   return (
     <Container>
       <Background />
@@ -22,6 +41,7 @@ export function FeatureShowcase(props: FeatureShowcaseProps) {
         <Title>{props.title}</Title>
         <Description>{props.description}</Description>
       </RightSide>
+      <SizedBox width={50} />
     </Container>
   )
 }
@@ -65,10 +85,16 @@ const Image = styled.img`
   width: 100%;
 `
 
-function Background() {
+function Background(props: { style?: React.CSSProperties }) {
   return (
     <svg
-      style={{ position: 'absolute', height, width, zIndex: -1 }}
+      style={{
+        position: 'absolute',
+        height,
+        width,
+        zIndex: -1,
+        ...props.style
+      }}
       width={width}
       height={height}
       viewBox={`0 0 ${width} ${height}`}
@@ -79,11 +105,11 @@ function Background() {
         width={width}
         height={height}
         rx='40'
-        fill='url(#paint0_linear_51_1335)'
+        fill='url(#background_gradient)'
       />
       <defs>
         <linearGradient
-          id='paint0_linear_51_1335'
+          id='background_gradient'
           x1='1319'
           y1='871'
           x2='80.7868'
@@ -92,7 +118,7 @@ function Background() {
         >
           <stop stopColor='#77582B' />
           <stop offset='0.567708' stopColor='#472853' stopOpacity='0.5' />
-          <stop offset='0.94582' stopColor='#19202E' />
+          <stop offset='0.94582' stopColor='#19202E00' />
         </linearGradient>
       </defs>
     </svg>

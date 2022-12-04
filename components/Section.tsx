@@ -21,14 +21,14 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: ${(props) => props.theme.spacing.lg} 0;
+  margin: calc(${(props) => props.theme.spacing.lg} * 2) 0;
 `
 
 const Title = styled.h2`
   color: ${(props) => props.theme.color.light};
   font-size: ${(props) => props.theme.fontSize.lg};
   text-align: center;
-  max-width: 400px;
+  max-width: 500px;
   margin-bottom: 0;
 `
 

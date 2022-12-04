@@ -30,7 +30,7 @@ function Index() {
       />
 
       <LandingSection>
-        <SizedBox height={theme.spacing.lg} />
+        <SizedBox height={`calc(${theme.spacing.lg} * 3)`} />
 
         <Title>
           Supercharged development <FlowHashTag>#onFlow</FlowHashTag>{' '}
@@ -87,7 +87,7 @@ function Index() {
         )}
       </LandingSection>
 
-      <SizedBox height={50} />
+      <SizedBox height={`calc(${theme.spacing.lg} * 5)`} />
 
       <Section
         title='Simple and transparent project development'
@@ -98,6 +98,19 @@ function Index() {
           description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. At velit iaculis imperdiet amet, purus egestas odio lectus. Parturient arcu eleifend eget cursus tempor purus.'
           imageSrc='/images/snapshot.png'
           iconSrc='/images/snapshot_icon.svg'
+        />
+      </Section>
+
+      <Section
+        title='First GUI #onFlow'
+        description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. At velit iaculis imperdiet amet, purus egestas odio lectus. Parturient arcu eleifend eget cursus tempor purus.'
+      >
+        <FeatureShowcase
+          title='Easy-breezy Storage Inspection'
+          description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. At velit iaculis imperdiet amet, purus egestas odio lectus. Parturient arcu eleifend eget cursus tempor purus.'
+          imageSrc='/images/storage.png'
+          iconSrc='/images/storage_icon.svg'
+          imageOnRight
         />
       </Section>
     </MainLayout>
@@ -163,20 +176,6 @@ const OrText = styled.div`
 
 const ReleaseLink = styled(ExternalLink)`
   color: ${(props) => props.theme.color.grey} !important;
-`
-
-const SectionTitle = styled.h2`
-  color: ${(props) => props.theme.color.light};
-  font-size: ${(props) => props.theme.fontSize.lg};
-  text-align: center;
-  max-width: 400px;
-  margin-bottom: 0;
-`
-
-const SectionDescription = styled.p`
-  color: ${(props) => props.theme.color.grey};
-  max-width: 600px;
-  text-align: center;
 `
 
 export default Index
