@@ -1,6 +1,8 @@
 import styled from '@emotion/styled'
 import React from 'react'
 import { SizedBox } from './SizedBox'
+import { useWindowSize } from 'react-use'
+import { getPixelValue, theme } from '../styles/theme'
 
 export type FeatureShowcaseProps = {
   title: string
@@ -11,20 +13,23 @@ export type FeatureShowcaseProps = {
 }
 
 export function FeatureShowcase(props: FeatureShowcaseProps) {
-  if (props.imageOnRight) {
+  const { width } = useWindowSize()
+  const isMobile = width <= getPixelValue(theme.breakpoints.mobile)
+
+  if (props.imageOnRight || isMobile) {
     return (
       <Container>
         <SizedBox width={50} />
         <Background style={{ transform: 'scaleX(-1)' }} />
-        <RightSide>
+        <TextSection>
           <Icon src={props.iconSrc} />
           <Title>{props.title}</Title>
           <Description>{props.description}</Description>
-        </RightSide>
-        <SizedBox width={30} />
-        <LeftSide>
+        </TextSection>
+        <SizedBox width={30} height={30} />
+        <ImageSection>
           <Image alt={props.title} src={props.imageSrc} />
-        </LeftSide>
+        </ImageSection>
       </Container>
     )
   }
@@ -32,15 +37,15 @@ export function FeatureShowcase(props: FeatureShowcaseProps) {
   return (
     <Container>
       <Background />
-      <LeftSide>
+      <ImageSection>
         <Image alt={props.title} src={props.imageSrc} />
-      </LeftSide>
+      </ImageSection>
       <SizedBox width={30} />
-      <RightSide>
+      <TextSection>
         <Icon src={props.iconSrc} />
         <Title>{props.title}</Title>
         <Description>{props.description}</Description>
-      </RightSide>
+      </TextSection>
       <SizedBox width={50} />
     </Container>
   )
@@ -55,6 +60,11 @@ const Container = styled.div`
   width: ${width}px;
   display: flex;
   align-items: center;
+  @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
+    flex-direction: column-reverse;
+    height: unset;
+    width: 100%;
+  }
 `
 
 const Icon = styled.img`
@@ -73,11 +83,11 @@ const Description = styled.p`
   line-height: ${(props) => props.theme.lineHeight.md};
 `
 
-const LeftSide = styled.div`
+const ImageSection = styled.div`
   flex: 2;
 `
 
-const RightSide = styled.div`
+const TextSection = styled.div`
   flex: 1;
 `
 
@@ -87,14 +97,8 @@ const Image = styled.img`
 
 function Background(props: { style?: React.CSSProperties }) {
   return (
-    <svg
-      style={{
-        position: 'absolute',
-        height,
-        width,
-        zIndex: -1,
-        ...props.style
-      }}
+    <BackgroundSvg
+      style={props.style}
       width={width}
       height={height}
       viewBox={`0 0 ${width} ${height}`}
@@ -121,6 +125,16 @@ function Background(props: { style?: React.CSSProperties }) {
           <stop offset='0.94582' stopColor='#19202E00' />
         </linearGradient>
       </defs>
-    </svg>
+    </BackgroundSvg>
   )
 }
+
+const BackgroundSvg = styled.svg`
+  position: absolute;
+  z-index: -1;
+  height: ${height}px;
+  width: ${width}px;
+  @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
+    display: none;
+  }
+`

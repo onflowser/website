@@ -30,6 +30,9 @@ declare module '@emotion/react' {
     lineHeight: {
       md: string
     }
+    breakpoints: {
+      mobile: string
+    }
   }
 }
 
@@ -61,5 +64,12 @@ export const theme: Theme = {
   },
   lineHeight: {
     md: '26px'
+  },
+  breakpoints: {
+    mobile: '1100px'
   }
+}
+
+export function getPixelValue(value: string): number {
+  return Number(value.replace('px', ''))
 }

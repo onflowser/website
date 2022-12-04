@@ -30,7 +30,7 @@ function Index() {
       />
 
       <LandingSection>
-        <SizedBox height={`calc(${theme.spacing.lg} * 3)`} />
+        <SizedBox height={theme.spacing.lg} />
 
         <Title>
           Supercharged development <FlowHashTag>#onFlow</FlowHashTag>{' '}
@@ -87,7 +87,7 @@ function Index() {
         )}
       </LandingSection>
 
-      <SizedBox height={`calc(${theme.spacing.lg} * 5)`} />
+      <SizedBox height={theme.spacing.lg} />
 
       <Section
         title='Simple and transparent project development'
