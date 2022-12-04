@@ -123,7 +123,7 @@ function Index() {
       >
         <FeatureShowcase
           title='Easy-breezy Storage Inspection'
-          description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. At velit iaculis imperdiet amet, purus egestas odio lectus. Parturient arcu eleifend eget cursus tempor purus.'
+          description="Each Flow account stores owned data (e.g. NFTs, Fungible tokens,...) in it's storage. Flowser exposes that within a simple and intuitive UI."
           imageSrc='/images/storage.png'
           iconSrc='/images/storage_icon.svg'
           imageOnRight
