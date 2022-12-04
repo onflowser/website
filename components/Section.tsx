@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import React, { ReactElement } from 'react'
+import { SizedBox } from './SizedBox'
 
 export type LandingSectionProps = {
   title: string
@@ -12,6 +13,7 @@ export function Section(props: LandingSectionProps) {
     <Container>
       <Title>{props.title}</Title>
       <Description>{props.description}</Description>
+      <SizedBox height={30} />
       {props.children}
     </Container>
   )
@@ -30,11 +32,13 @@ const Title = styled.h2`
   text-align: center;
   max-width: 500px;
   margin-bottom: 0;
+  font-weight: normal;
 `
 
 const Description = styled.p`
   color: ${(props) => props.theme.color.grey};
-  max-width: 600px;
+  max-width: 700px;
   text-align: center;
   line-height: ${(props) => props.theme.lineHeight.md};
+  font-size: ${(props) => props.theme.fontSize.md};
 `

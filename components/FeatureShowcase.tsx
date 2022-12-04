@@ -55,8 +55,8 @@ export function FeatureShowcase(props: FeatureShowcaseProps) {
   )
 }
 
-const width = 1064
-const height = 602
+const width = 1200
+const height = 700
 
 const Container = styled.div`
   position: relative;
@@ -85,6 +85,7 @@ const Title = styled.h2`
 const Description = styled.p`
   color: ${(props) => props.theme.color.grey};
   line-height: ${(props) => props.theme.lineHeight.md};
+  font-size: ${(props) => props.theme.fontSize.sm};
 `
 
 const ImageSection = styled.div`
@@ -100,6 +101,7 @@ const Image = styled.img`
 `
 
 function Background(props: { style?: React.CSSProperties }) {
+  const [y2] = useState(Math.random() * 700)
   return (
     <BackgroundSvg
       style={props.style}
@@ -120,8 +122,8 @@ function Background(props: { style?: React.CSSProperties }) {
           id='background_gradient'
           x1='1319'
           y1='871'
-          x2='80.7868'
-          y2='296.416'
+          x2='300'
+          y2={y2}
           gradientUnits='userSpaceOnUse'
         >
           <stop stopColor='#77582B' />

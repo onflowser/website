@@ -103,11 +103,11 @@ function Index() {
         {renderDownloadOptions()}
       </LandingSection>
 
-      <SizedBox height={theme.spacing.lg} />
+      <SizedBox height={theme.spacing.xl} />
 
       <Section
         title='Simple and transparent web3 development'
-        description="Developing a modern website is a very transparent process - you make changes, which get immediately reflected on your local development preview. But that's not the case with most today's web3 dev tools."
+        description="Developing a modern website is a very transparent process - you make some changes and those get immediately reflected on your local development preview. But that's not the case with most today's web3 dev tools."
       >
         <FeatureShowcase
           title='Superpower of a snapshot'
@@ -150,7 +150,7 @@ const Title = styled.h1`
 const Description = styled.p`
   color: ${(props) => props.theme.color.grey};
   font-size: ${(props) => props.theme.fontSize.md};
-  line-height: ${(props) => props.theme.lineHeight.md};
+  line-height: ${(props) => props.theme.lineHeight.lg};
 `
 
 const Notice = styled(Description)`

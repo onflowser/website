@@ -53,17 +53,18 @@ export const theme: Theme = {
     gold: '#FFDD62A0'
   },
   fontSize: {
-    sm: '14px',
-    md: '18px',
-    lg: '36px',
-    big: '55px'
+    sm: '16px',
+    md: '22px',
+    lg: '40px',
+    big: '60px'
   },
   radius: {
     sm: '7px',
     md: '10px'
   },
   lineHeight: {
-    md: '26px'
+    md: '26px',
+    lg: '30px'
   },
   breakpoints: {
     mobile: '1100px'
