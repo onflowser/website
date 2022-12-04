@@ -29,6 +29,7 @@ declare module '@emotion/react' {
     }
     lineHeight: {
       md: string
+      lg: string
     }
     breakpoints: {
       mobile: string
