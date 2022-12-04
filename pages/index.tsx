@@ -90,20 +90,20 @@ function Index() {
       <SizedBox height={theme.spacing.lg} />
 
       <Section
-        title='Simple and transparent project development'
-        description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. At velit iaculis imperdiet amet, purus egestas odio lectus. Parturient arcu eleifend eget cursus tempor purus.'
+        title='Simple and transparent web3 development'
+        description="Developing a modern website is a very transparent process - you make changes, which get immediately reflected on your local development preview. But that's not the case with most today's web3 dev tools."
       >
         <FeatureShowcase
           title='Superpower of a snapshot'
-          description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. At velit iaculis imperdiet amet, purus egestas odio lectus. Parturient arcu eleifend eget cursus tempor purus.'
+          description='Snapshots are a way to save the state of your local blockchain and later jump back to it. All of that is available right from the GUI!'
           imageSrc='/images/snapshot.png'
           iconSrc='/images/snapshot_icon.svg'
         />
       </Section>
 
       <Section
-        title='First GUI #onFlow'
-        description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. At velit iaculis imperdiet amet, purus egestas odio lectus. Parturient arcu eleifend eget cursus tempor purus.'
+        title='First GUI dev tool #onFlow'
+        description='Flowser gives you a complete real-time overview of your local blockchain without needing to manually execute various Flow CLI commands and Cadence scripts.'
       >
         <FeatureShowcase
           title='Easy-breezy Storage Inspection'
