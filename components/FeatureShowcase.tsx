@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { SizedBox } from './SizedBox'
 import { useWindowSize } from 'react-use'
 import { getPixelValue, theme } from '../styles/theme'
+import { useParallax } from 'react-scroll-parallax'
 
 export type FeatureShowcaseProps = {
   title: string
@@ -15,6 +16,9 @@ export type FeatureShowcaseProps = {
 export function FeatureShowcase(props: FeatureShowcaseProps) {
   const { width } = useWindowSize()
   const [isMobile, setMobile] = useState(false)
+  const backgroundParallax = useParallax<HTMLDivElement>({
+    opacity: [0.4, 1.4]
+  })
 
   useEffect(() => {
     setMobile(width <= getPixelValue(theme.breakpoints.mobile))
@@ -22,7 +26,7 @@ export function FeatureShowcase(props: FeatureShowcaseProps) {
 
   if (props.imageOnRight || isMobile) {
     return (
-      <Container>
+      <Container ref={backgroundParallax.ref}>
         <SizedBox width={50} />
         <Background style={{ transform: 'scaleX(-1)' }} />
         <TextSection>
@@ -39,7 +43,7 @@ export function FeatureShowcase(props: FeatureShowcaseProps) {
   }
 
   return (
-    <Container>
+    <Container ref={backgroundParallax.ref}>
       <Background />
       <ImageSection>
         <Image alt={props.title} src={props.imageSrc} />
@@ -127,7 +131,14 @@ function Background(props: { style?: React.CSSProperties }) {
           gradientUnits='userSpaceOnUse'
         >
           <stop stopColor='#77582B' />
-          <stop offset='0.567708' stopColor='#472853' stopOpacity='0.5' />
+          <stop offset='0.5' stopColor='#472853' stopOpacity='0.5'>
+            <animate
+              attributeName='offset'
+              values='0.5; 0.75; 0.5;'
+              dur='6s'
+              repeatCount='indefinite'
+            ></animate>
+          </stop>
           <stop offset='0.94582' stopColor='#19202E00' />
         </linearGradient>
       </defs>

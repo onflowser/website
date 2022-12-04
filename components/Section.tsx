@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import React, { ReactElement } from 'react'
 import { SizedBox } from './SizedBox'
+import { useParallax } from 'react-scroll-parallax'
 
 export type LandingSectionProps = {
   title: string
@@ -9,11 +10,20 @@ export type LandingSectionProps = {
 }
 
 export function Section(props: LandingSectionProps) {
+  const containerParallax = useParallax<HTMLDivElement>({
+    translateY: [10, 0]
+  })
+  const headerParallax = useParallax<HTMLDivElement>({
+    translateY: [100, -50],
+    opacity: [-0.2, 1.2]
+  })
   return (
-    <Container>
-      <Title>{props.title}</Title>
-      <Description>{props.description}</Description>
-      <SizedBox height={30} />
+    <Container ref={containerParallax.ref}>
+      <Header ref={headerParallax.ref}>
+        <Title>{props.title}</Title>
+        <Description>{props.description}</Description>
+        <SizedBox height={30} />
+      </Header>
       {props.children}
     </Container>
   )
@@ -24,6 +34,13 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   margin: calc(${(props) => props.theme.spacing.lg} * 2) 0;
+`
+
+const Header = styled.div`
+  z-index: -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
 const Title = styled.h2`
