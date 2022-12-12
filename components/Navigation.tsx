@@ -7,7 +7,7 @@ import { theme } from '../styles/theme'
 import { ExternalLink } from './ExternalLink'
 
 // TODO: Enable when those sites are updated
-const showDocsAndBlogLinks = false
+const showBlogLink = false
 
 function Navigation() {
   return (
@@ -20,11 +20,11 @@ function Navigation() {
         </Link>
       </LeftSide>
       <RightSide>
-        {showDocsAndBlogLinks && (
+        <ExternalLink href='https://docs.flowser.dev' noUnderline>
+          Docs
+        </ExternalLink>
+        {showBlogLink && (
           <>
-            <NavLink target='_blank' href='https://docs.flowser.dev'>
-              Docs
-            </NavLink>
             <SizedBox width={theme.spacing.md} />
             <NavLink href='/blog'>Blog</NavLink>
           </>
@@ -77,9 +77,9 @@ const NavLink = ({ href, children, ...rest }: NavLinkProps) => {
 
   return (
     <div className={classes.join(' ')}>
-      <Link {...rest} href={href}>
+      <a {...rest} href={href}>
         {children}
-      </Link>
+      </a>
     </div>
   )
 }
