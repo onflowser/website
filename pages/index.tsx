@@ -112,7 +112,7 @@ function Index() {
         <FeatureShowcase
           title='Superpower of a snapshot'
           description='Snapshots are a way to save the state of your local blockchain and later jump back to it. All of that is available right from the GUI!'
-          imageSrc='/images/snapshot.png'
+          videoSrc='https://docs.flowser.dev/snapshots.mp4'
           iconSrc='/images/snapshot_icon.svg'
         />
       </Section>
@@ -124,7 +124,7 @@ function Index() {
         <FeatureShowcase
           title='Easy-breezy Storage Inspection'
           description="Each Flow account stores owned data (e.g. NFTs, Fungible tokens,...) in it's storage. Flowser exposes that within a simple and intuitive UI."
-          imageSrc='/images/storage.png'
+          videoSrc='https://docs.flowser.dev/detailed-info.mp4'
           iconSrc='/images/storage_icon.svg'
           imageOnRight
         />

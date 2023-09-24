@@ -8,7 +8,7 @@ import { useParallax } from 'react-scroll-parallax'
 export type FeatureShowcaseProps = {
   title: string
   description: string
-  imageSrc: string
+  videoSrc: string
   iconSrc: string
   imageOnRight?: boolean
 }
@@ -36,7 +36,9 @@ export function FeatureShowcase(props: FeatureShowcaseProps) {
         </TextSection>
         <SizedBox width={30} height={30} />
         <ImageSection>
-          <Image alt={props.title} src={props.imageSrc} />
+          <Video muted={true} autoPlay={true} loop={true}>
+            <source src={props.videoSrc} type='video/mp4' />
+          </Video>
         </ImageSection>
       </Container>
     )
@@ -46,7 +48,9 @@ export function FeatureShowcase(props: FeatureShowcaseProps) {
     <Container ref={backgroundParallax.ref}>
       <Background />
       <ImageSection>
-        <Image alt={props.title} src={props.imageSrc} />
+        <Video muted={true} autoPlay={true} loop={true}>
+          <source src={props.videoSrc} type='video/mp4' />
+        </Video>
       </ImageSection>
       <SizedBox width={30} />
       <TextSection>
@@ -94,14 +98,17 @@ const Description = styled.p`
 
 const ImageSection = styled.div`
   flex: 2;
+  overflow: hidden;
 `
 
 const TextSection = styled.div`
   flex: 1;
 `
 
-const Image = styled.img`
+const Video = styled.video`
   width: 100%;
+  border-radius: ${(props) => props.theme.radius.md};
+  transform: scale(1.1);
 `
 
 function Background(props: { style?: React.CSSProperties }) {
