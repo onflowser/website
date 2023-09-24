@@ -4,6 +4,7 @@ import { SizedBox } from './SizedBox'
 import { useWindowSize } from 'react-use'
 import { getPixelValue, theme } from '../styles/theme'
 import { useParallax } from 'react-scroll-parallax'
+import { AutoplayVideo } from './Video'
 
 export type FeatureShowcaseProps = {
   title: string
@@ -36,9 +37,7 @@ export function FeatureShowcase(props: FeatureShowcaseProps) {
         </TextSection>
         <SizedBox width={30} height={30} />
         <ImageSection>
-          <Video muted={true} autoPlay={true} loop={true}>
-            <source src={props.videoSrc} type='video/mp4' />
-          </Video>
+          <Video src={props.videoSrc} />
         </ImageSection>
       </Container>
     )
@@ -48,9 +47,7 @@ export function FeatureShowcase(props: FeatureShowcaseProps) {
     <Container ref={backgroundParallax.ref}>
       <Background />
       <ImageSection>
-        <Video muted={true} autoPlay={true} loop={true}>
-          <source src={props.videoSrc} type='video/mp4' />
-        </Video>
+        <Video src={props.videoSrc} />
       </ImageSection>
       <SizedBox width={30} />
       <TextSection>
@@ -105,9 +102,8 @@ const TextSection = styled.div`
   flex: 1;
 `
 
-const Video = styled.video`
+const Video = styled(AutoplayVideo)`
   width: 100%;
-  border-radius: ${(props) => props.theme.radius.md};
   transform: scale(1.1);
 `
 

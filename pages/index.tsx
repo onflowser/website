@@ -13,69 +13,9 @@ import { ExternalLink } from '../components/ExternalLink'
 import { useGithub } from '../lib/use-github'
 import { FeatureShowcase } from '../components/FeatureShowcase'
 import { Section } from '../components/Section'
+import { AutoplayVideo } from '../components/Video'
 
 function Index() {
-  const { latestRelease, winAsset, macArmAsset, macX64Asset } = useGithub()
-  const [platform, setPlatform] = useState<OsPlatformName>('MacOS')
-
-  useEffect(() => {
-    setPlatform(getPlatformName())
-  }, [])
-
-  function renderDownloadOptions() {
-    if (platform === 'Linux') {
-      return (
-        <div>
-          <Notice>🚧 Linux is currently not yet supported. 🚧</Notice>
-          <Notice>
-            If you would benefit from adding Linux support, tell us here:{' '}
-            <ExternalLink href='https://github.com/onflowser/flowser/discussions/142'>
-              github.com/onflowser/flowser/discussions/142
-            </ExternalLink>
-          </Notice>
-        </div>
-      )
-    }
-
-    return (
-      <div>
-        <InstallMethod>
-          Run with Flow CLI
-          <SizedBox height={theme.spacing.sm} />
-          <InlineCode>flow flowser</InlineCode>
-        </InstallMethod>
-
-        <SizedBox height={theme.spacing.md} />
-        <OrText>or</OrText>
-        <SizedBox height={theme.spacing.md} />
-
-        <InstallMethod>
-          Download directly
-          <SizedBox height={theme.spacing.sm} />
-          {platform === 'Windows' ? (
-            <PrimaryLink href={winAsset?.browser_download_url} download>
-              Download for Windows
-            </PrimaryLink>
-          ) : (
-            <div style={{ display: 'flex' }}>
-              <PrimaryLink href={macArmAsset?.browser_download_url} download>
-                Download for Apple Silicon
-              </PrimaryLink>
-              <SizedBox width={10} />
-              <PrimaryLink href={macX64Asset?.browser_download_url} download>
-                Download for Apple Intel
-              </PrimaryLink>
-            </div>
-          )}
-          <SizedBox height={theme.spacing.md} />
-          <ReleaseLink href={latestRelease?.url}>
-            {latestRelease?.tagName ?? '-'}
-          </ReleaseLink>
-        </InstallMethod>
-      </div>
-    )
-  }
-
   return (
     <MainLayout>
       <PageMeta
@@ -91,16 +31,14 @@ function Index() {
           <FlowLogo src='/images/flow_logo.svg' alt='Flow blockchain logo' />{' '}
           blockchain
         </Title>
-        <Description>
-          Flowser is your graphical development inspection tool. It is giving
-          you confidence, your smart contracts are behaving as intended, and
-          brings the world of transactions and blocks in beautiful colours
-          making it easy to understand.
-        </Description>
 
-        <SizedBox height={theme.spacing.xl} />
+        <SizedBox height={theme.spacing.lg} />
 
-        {renderDownloadOptions()}
+        <DownloadOptions />
+
+        <SizedBox height={theme.spacing.lg} />
+
+        <AutoplayVideo src='/videos/hero-demo.mp4' />
       </LandingSection>
 
       <SizedBox height={theme.spacing.xl} />
@@ -130,6 +68,67 @@ function Index() {
         />
       </Section>
     </MainLayout>
+  )
+}
+
+function DownloadOptions() {
+  const { latestRelease, winAsset, macArmAsset, macX64Asset } = useGithub()
+  const [platform, setPlatform] = useState<OsPlatformName>('MacOS')
+
+  useEffect(() => {
+    setPlatform(getPlatformName())
+  }, [])
+
+  if (platform === 'Linux') {
+    return (
+      <div>
+        <Notice>🚧 Linux is currently not yet supported. 🚧</Notice>
+        <Notice>
+          If you would benefit from adding Linux support, tell us here:{' '}
+          <ExternalLink href='https://github.com/onflowser/flowser/discussions/142'>
+            github.com/onflowser/flowser/discussions/142
+          </ExternalLink>
+        </Notice>
+      </div>
+    )
+  }
+
+  return (
+    <div>
+      <InstallMethod>
+        Run with Flow CLI
+        <SizedBox height={theme.spacing.sm} />
+        <InlineCode>flow flowser</InlineCode>
+      </InstallMethod>
+
+      <SizedBox height={theme.spacing.md} />
+      <OrText>or</OrText>
+      <SizedBox height={theme.spacing.md} />
+
+      <InstallMethod>
+        Download directly
+        <SizedBox height={theme.spacing.sm} />
+        {platform === 'Windows' ? (
+          <PrimaryLink href={winAsset?.browser_download_url} download>
+            Download for Windows
+          </PrimaryLink>
+        ) : (
+          <div style={{ display: 'flex' }}>
+            <PrimaryLink href={macArmAsset?.browser_download_url} download>
+              Download for Apple Silicon
+            </PrimaryLink>
+            <SizedBox width={10} />
+            <PrimaryLink href={macX64Asset?.browser_download_url} download>
+              Download for Apple Intel
+            </PrimaryLink>
+          </div>
+        )}
+        <SizedBox height={theme.spacing.md} />
+        <ReleaseLink href={latestRelease?.url}>
+          {latestRelease?.tagName ?? '-'}
+        </ReleaseLink>
+      </InstallMethod>
+    </div>
   )
 }
 
