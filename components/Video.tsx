@@ -23,4 +23,5 @@ export function AutoplayVideo(props: AutoplayVideoProps) {
 
 const Container = styled.video`
   border-radius: ${(props) => props.theme.radius.md};
+  object-fit: cover;
 `
