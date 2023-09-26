@@ -44,8 +44,8 @@ function Index() {
       <SizedBox height={theme.spacing.xl} />
 
       <Section
-        title='Simple and transparent web3 development'
-        description="Developing a modern website is a very transparent process - you make some changes and those get immediately reflected on your local development preview. But that's not the case with most today's web3 dev tools."
+        title='Your gateway to Flow'
+        description='Flowser guides you thought your dev journey with an easy to use GUI.'
       >
         <FeatureShowcase
           title='Get Interactive'
@@ -56,8 +56,8 @@ function Index() {
       </Section>
 
       <Section
-        title='Must have dev tool #onFlow'
-        description='Flowser gives you a complete real-time overview of your local blockchain without needing to manually execute various Flow CLI commands and Cadence scripts.'
+        title='Focusing on DX'
+        description='Building a web3 product is hard enough, why also bother with all the hastles of local development?'
       >
         <FeatureShowcase
           title='Data at your fingertips'
