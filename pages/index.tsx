@@ -11,6 +11,7 @@ import { Section } from '../components/Section'
 import { AutoplayVideo } from '../components/Video'
 import { PrimaryLink } from '../components/PrimaryLink'
 import Link from 'next/link'
+import { MacbookMockup } from '../components/MacbookMockup'
 
 function Index() {
   return (
@@ -35,7 +36,9 @@ function Index() {
 
         <SizedBox height={theme.spacing.lg} />
 
-        <HeroVideo height={780} src='/videos/hero-demo.mp4' />
+        <MacbookMockup>
+          <HeroVideo src='/videos/hero-demo.mp4' />
+        </MacbookMockup>
       </LandingSection>
 
       <SizedBox height={theme.spacing.xl} />
@@ -70,8 +73,10 @@ function Index() {
 
 const HeroVideo = styled(AutoplayVideo)`
   width: 100%;
+  height: 100%;
   object-fit: cover;
-  object-position: 0 -50px;
+  object-position: 0 -45px;
+  border-radius: 0;
 `
 
 const LandingSection = styled.div`
