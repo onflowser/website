@@ -1,22 +1,15 @@
 import styled from '@emotion/styled'
-import React, { CSSProperties } from 'react'
+import React from 'react'
 
-type AutoplayVideoProps = {
-  className?: string
-  style?: CSSProperties
+type AutoplayVideoProps = React.VideoHTMLAttributes<HTMLVideoElement> & {
   src: string
 }
 
 export function AutoplayVideo(props: AutoplayVideoProps) {
+  const { src, ...videoProps } = props
   return (
-    <Container
-      muted={true}
-      autoPlay={true}
-      loop={true}
-      className={props.className}
-      style={props.style}
-    >
-      <source src={props.src} type='video/mp4' />
+    <Container muted={true} autoPlay={true} loop={true} {...videoProps}>
+      <source src={src} type='video/mp4' />
     </Container>
   )
 }

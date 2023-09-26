@@ -30,15 +30,12 @@ function Index() {
         </Title>
 
         <Link href='/download'>
-          <PrimaryLink>Try Flowser desktop app</PrimaryLink>
+          <PrimaryLink>Download desktop app</PrimaryLink>
         </Link>
 
         <SizedBox height={theme.spacing.lg} />
 
-        <AutoplayVideo
-          src='/videos/hero-demo.mp4'
-          style={{ width: '100%', maxHeight: '60vh' }}
-        />
+        <HeroVideo height={780} src='/videos/hero-demo.mp4' />
       </LandingSection>
 
       <SizedBox height={theme.spacing.xl} />
@@ -70,6 +67,12 @@ function Index() {
     </MainLayout>
   )
 }
+
+const HeroVideo = styled(AutoplayVideo)`
+  width: 100%;
+  object-fit: cover;
+  object-position: 0 -50px;
+`
 
 const LandingSection = styled.div`
   margin: auto;
