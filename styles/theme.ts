@@ -16,6 +16,7 @@ declare module '@emotion/react' {
       light: string
       flow: string
       gold: string
+      lightGold: string
     }
     fontSize: {
       sm: string
@@ -51,7 +52,8 @@ export const theme: Theme = {
     grey: '#FFFFFFB2',
     darkGrey: '#59678352',
     flow: '#16FF99',
-    gold: '#FFDD62A0'
+    gold: '#FFDD62A0',
+    lightGold: '#FFDD6230'
   },
   fontSize: {
     sm: '16px',

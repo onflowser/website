@@ -72,6 +72,7 @@ const HeroVideo = styled(AutoplayVideo)`
   width: 100%;
   object-fit: cover;
   object-position: 0 -50px;
+  box-shadow: 2px 2px 8px 8px ${(props) => props.theme.color.lightGold};
 `
 
 const LandingSection = styled.div`
