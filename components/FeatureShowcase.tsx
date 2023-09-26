@@ -104,7 +104,6 @@ const TextSection = styled.div`
 
 const Video = styled(AutoplayVideo)`
   width: 100%;
-  transform: scale(1.1);
 `
 
 function Background(props: { style?: React.CSSProperties }) {

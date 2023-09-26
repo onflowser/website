@@ -48,22 +48,22 @@ function Index() {
         description="Developing a modern website is a very transparent process - you make some changes and those get immediately reflected on your local development preview. But that's not the case with most today's web3 dev tools."
       >
         <FeatureShowcase
-          title='Superpower of a snapshot'
-          description='Snapshots are a way to save the state of your local blockchain and later jump back to it. All of that is available right from the GUI!'
-          videoSrc='https://docs.flowser.dev/snapshots.mp4'
-          iconSrc='/images/snapshot_icon.svg'
+          title='Get Interactive'
+          description='The simplest way to interact with the Flow blockchain. We build a dynamic UI for executing scripts or transactions.'
+          videoSrc='/videos/interactions.mp4'
+          iconSrc='/images/cursor_click.svg'
         />
       </Section>
 
       <Section
-        title='First GUI dev tool #onFlow'
+        title='Must have dev tool #onFlow'
         description='Flowser gives you a complete real-time overview of your local blockchain without needing to manually execute various Flow CLI commands and Cadence scripts.'
       >
         <FeatureShowcase
-          title='Easy-breezy Storage Inspection'
-          description="Each Flow account stores owned data (e.g. NFTs, Fungible tokens,...) in it's storage. Flowser exposes that within a simple and intuitive UI."
-          videoSrc='https://docs.flowser.dev/detailed-info.mp4'
-          iconSrc='/images/storage_icon.svg'
+          title='Data at your fingertips'
+          description='View all the blockchain data in a consolidated GUI. No more running around, just Flowse.'
+          videoSrc='/videos/data-view-demo.mp4'
+          iconSrc='/images/block.svg'
           imageOnRight
         />
       </Section>
