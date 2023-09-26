@@ -2,7 +2,7 @@ import React from 'react'
 import { PageMeta } from '../components/PageMeta'
 
 import styles from '../components/styles.module.css'
-import MainLayout from '../layouts/Main'
+import { MainLayout } from '../layouts/Main'
 
 export default ({ statusCode }) => {
   return (

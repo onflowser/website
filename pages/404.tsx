@@ -1,6 +1,6 @@
 import React from 'react'
 import { Page404 as Page404Component } from 'components'
-import MainLayout from '../layouts/Main'
+import { MainLayout } from '../layouts/Main'
 
 function Page404() {
   return (
