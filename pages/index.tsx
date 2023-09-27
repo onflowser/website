@@ -11,8 +11,13 @@ import { Section } from '../components/Section'
 import { AutoplayVideo } from '../components/Video'
 import { PrimaryLink } from '../components/PrimaryLink'
 import Link from 'next/link'
+import { useWindowSize } from 'react-use'
+
+const heroVideoResolutionY = 780
 
 function Index() {
+  const { width } = useWindowSize()
+
   return (
     <MainLayout>
       <PageMeta
@@ -33,7 +38,17 @@ function Index() {
 
         <SizedBox height={theme.spacing.xl} />
 
-        <HeroVideo height={780} src='/videos/hero-demo.mp4' />
+        {width > heroVideoResolutionY ? (
+          <HeroVideo
+            height={heroVideoResolutionY}
+            src='/videos/hero-demo.mp4'
+          />
+        ) : (
+          <AutoplayVideo
+            style={{ width: '100%' }}
+            src='/videos/hero-demo.mp4'
+          />
+        )}
       </LandingSection>
 
       <SizedBox height={theme.spacing.xl} />
@@ -98,6 +113,10 @@ const Title = styled.h1`
   font-size: ${(props) => props.theme.fontSize.big};
   font-weight: normal;
   max-width: 700px;
+
+  @media (max-width: 800px) {
+    font-size: ${(props) => props.theme.fontSize.lg};
+  }
 `
 
 const FlowHashTag = styled.span`
