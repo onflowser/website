@@ -3,7 +3,7 @@ import React, { LegacyRef } from 'react'
 
 type AutoplayVideoProps = React.VideoHTMLAttributes<HTMLVideoElement> & {
   src: string
-  videoRef: LegacyRef<HTMLVideoElement>
+  videoRef?: LegacyRef<HTMLVideoElement>
 }
 
 export function AutoplayVideo(props: AutoplayVideoProps) {
