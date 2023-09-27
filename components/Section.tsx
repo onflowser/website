@@ -15,7 +15,7 @@ export function Section(props: LandingSectionProps) {
   })
   const headerParallax = useParallax<HTMLDivElement>({
     translateY: [20, -10],
-    opacity: [-0.2, 1.2]
+    opacity: [0.4, 1]
   })
   return (
     <Container ref={containerParallax.ref}>

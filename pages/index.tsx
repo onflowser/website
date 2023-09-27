@@ -59,7 +59,7 @@ function Index() {
       <SizedBox height={theme.spacing.xl} />
 
       <Section
-        title='Your gateway to Flow'
+        title='Your gateway to Flow 🌊'
         description='Flowser guides you thought your dev journey with an easy to use GUI.'
       >
         <FeatureShowcase
@@ -71,7 +71,7 @@ function Index() {
       </Section>
 
       <Section
-        title='Focusing on DX'
+        title='Focusing on DX 🧑‍💻'
         description='Building a web3 product is hard enough, why also bother with all the hastles of local development?'
       >
         <FeatureShowcase
@@ -81,6 +81,18 @@ function Index() {
           iconSrc='/images/block.svg'
           imageOnRight
         />
+      </Section>
+
+      <Section
+        title="We'd love your feedback 🙋"
+        description='Any thoughts or questions on how to improve Flowser app are welcome.'
+      >
+        <PrimaryLink
+          href='https://github.com/onflowser/flowser/issues/new/choose'
+          target='_blank'
+        >
+          Submit feedback on Github
+        </PrimaryLink>
       </Section>
     </MainLayout>
   )
