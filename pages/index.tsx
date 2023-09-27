@@ -123,6 +123,7 @@ const Title = styled.h1`
   max-width: 700px;
 
   @media (max-width: 800px) {
+    max-width: unset;
     font-size: ${(props) => props.theme.fontSize.lg};
   }
 `
