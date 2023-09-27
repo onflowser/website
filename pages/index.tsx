@@ -21,8 +21,6 @@ function Index() {
       />
 
       <LandingSection>
-        <SizedBox height={theme.spacing.lg} />
-
         <Title>
           Supercharged development <FlowHashTag>#onFlow</FlowHashTag>{' '}
           <FlowLogo src='/images/flow_logo.svg' alt='Flow blockchain logo' />{' '}
@@ -33,7 +31,7 @@ function Index() {
           <PrimaryLink>Download desktop app</PrimaryLink>
         </Link>
 
-        <SizedBox height={theme.spacing.lg} />
+        <SizedBox height={theme.spacing.xl} />
 
         <HeroVideo height={780} src='/videos/hero-demo.mp4' />
       </LandingSection>
@@ -72,7 +70,19 @@ const HeroVideo = styled(AutoplayVideo)`
   width: 100%;
   object-fit: cover;
   object-position: 0 -50px;
-  box-shadow: 2px 2px 8px 8px ${(props) => props.theme.color.lightGold};
+  animation: glowing 2s infinite alternate;
+
+  @keyframes glowing {
+    0% {
+      box-shadow: 2px 2px 15px 15px #ffdd6210;
+    }
+    50% {
+      box-shadow: 2px 2px 20px 20px #ffdd6310;
+    }
+    100% {
+      box-shadow: 2px 2px 15px 15px #ffdd6210;
+    }
+  }
 `
 
 const LandingSection = styled.div`
