@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { MainLayout } from '../layouts/Main'
 
 // images
@@ -17,6 +17,17 @@ const heroVideoResolutionY = 780
 
 function Index() {
   const { width } = useWindowSize()
+  const heroVideoRef = useRef<HTMLVideoElement>()
+
+  // For some reason it doesn't work to do inline conditional rendering (probably because of SSR),
+  // so to avoid wasting too much time, just do this hacky thing instead.
+  useEffect(() => {
+    if (width < 700) {
+      heroVideoRef.current.removeAttribute('height')
+    } else {
+      heroVideoRef.current.setAttribute('height', String(heroVideoResolutionY))
+    }
+  }, [width])
 
   return (
     <MainLayout>
@@ -38,17 +49,11 @@ function Index() {
 
         <SizedBox height={theme.spacing.xl} />
 
-        {width > heroVideoResolutionY ? (
-          <HeroVideo
-            height={heroVideoResolutionY}
-            src='/videos/hero-demo.mp4'
-          />
-        ) : (
-          <AutoplayVideo
-            style={{ width: '100%' }}
-            src='/videos/hero-demo.mp4'
-          />
-        )}
+        <HeroVideo
+          videoRef={heroVideoRef}
+          src='/videos/hero-demo.mp4'
+          height={heroVideoResolutionY}
+        />
       </LandingSection>
 
       <SizedBox height={theme.spacing.xl} />
@@ -84,8 +89,11 @@ function Index() {
 const HeroVideo = styled(AutoplayVideo)`
   width: 100%;
   object-fit: cover;
-  object-position: 0 -50px;
   animation: glowing 2s infinite alternate;
+
+  @media (min-width: 700px) {
+    object-position: 0 -50px;
+  }
 
   @keyframes glowing {
     0% {
