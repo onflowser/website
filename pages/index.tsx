@@ -33,7 +33,7 @@ function Index() {
     <MainLayout>
       <PageMeta
         title='Flowser - Supercharged development #onFlow blockchain'
-        description='Flowser is first-of-its-kind development tool for Flow blockchain. It does the heavy work of managing blockchain emulator, inspecting the current state, interacting with the network and much more!'
+        description='Flowser is a user-friendly GUI development tool for Flow blockchain. It does the heavy work of managing blockchain emulator, indexing the blockchain, executing interactions and much more!'
       />
 
       <LandingSection>
