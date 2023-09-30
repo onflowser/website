@@ -7,7 +7,7 @@ type Props = {
   children: ReactElement | ReactElement[]
 }
 
-function MainLayout({ children }: Props) {
+export function MainLayout({ children }: Props) {
   return (
     <Root>
       <Background src='/images/background.png' />
@@ -46,5 +46,3 @@ const Content = styled.div`
     padding: 0 ${(props) => props.theme.spacing.md};
   }
 `
-
-export default MainLayout

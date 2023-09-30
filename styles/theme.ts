@@ -51,7 +51,7 @@ export const theme: Theme = {
     grey: '#FFFFFFB2',
     darkGrey: '#59678352',
     flow: '#16FF99',
-    gold: '#FFDD62A0'
+    gold: '#FFDD62A0',
   },
   fontSize: {
     sm: '16px',

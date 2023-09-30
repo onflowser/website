@@ -1,160 +1,143 @@
-import React, { useEffect, useState } from 'react'
-import MainLayout from '../layouts/Main'
+import React, { useEffect, useRef } from 'react'
+import { MainLayout } from '../layouts/Main'
 
 // images
 import { PageMeta } from '../components/PageMeta'
 import styled from '@emotion/styled'
-import { InlineCode } from '../components/InlineCode'
-import { PrimaryLink } from '../components/PrimaryLink'
 import { SizedBox } from '../components/SizedBox'
 import { theme } from '../styles/theme'
-import { getPlatformName, OsPlatformName } from '../lib/utils'
-import { ExternalLink } from '../components/ExternalLink'
-import { useGithub } from '../lib/use-github'
 import { FeatureShowcase } from '../components/FeatureShowcase'
 import { Section } from '../components/Section'
+import { AutoplayVideo } from '../components/Video'
+import { PrimaryLink } from '../components/PrimaryLink'
+import Link from 'next/link'
+import { useWindowSize } from 'react-use'
+
+const heroVideoResolutionY = 780
 
 function Index() {
-  const { latestRelease, winAsset, macArmAsset, macX64Asset } = useGithub()
-  const [platform, setPlatform] = useState<OsPlatformName>('MacOS')
+  const { width } = useWindowSize()
+  const heroVideoRef = useRef<HTMLVideoElement>()
 
+  // For some reason it doesn't work to do inline conditional rendering (probably because of SSR),
+  // so to avoid wasting too much time, just do this hacky thing instead.
   useEffect(() => {
-    setPlatform(getPlatformName())
-  }, [])
-
-  function renderDownloadOptions() {
-    if (platform === 'Linux') {
-      return (
-        <div>
-          <Notice>🚧 Linux is currently not yet supported. 🚧</Notice>
-          <Notice>
-            If you would benefit from adding Linux support, tell us here:{' '}
-            <ExternalLink href='https://github.com/onflowser/flowser/discussions/142'>
-              github.com/onflowser/flowser/discussions/142
-            </ExternalLink>
-          </Notice>
-        </div>
-      )
+    if (width < 700) {
+      heroVideoRef.current.removeAttribute('height')
+    } else {
+      heroVideoRef.current.setAttribute('height', String(heroVideoResolutionY))
     }
-
-    return (
-      <div>
-        <InstallMethod>
-          Run with Flow CLI
-          <SizedBox height={theme.spacing.sm} />
-          <InlineCode>flow flowser</InlineCode>
-        </InstallMethod>
-
-        <SizedBox height={theme.spacing.md} />
-        <OrText>or</OrText>
-        <SizedBox height={theme.spacing.md} />
-
-        <InstallMethod>
-          Download directly
-          <SizedBox height={theme.spacing.sm} />
-          {platform === 'Windows' ? (
-            <PrimaryLink href={winAsset?.browser_download_url} download>
-              Download for Windows
-            </PrimaryLink>
-          ) : (
-            <div style={{ display: 'flex' }}>
-              <PrimaryLink href={macArmAsset?.browser_download_url} download>
-                Download for Apple Silicon
-              </PrimaryLink>
-              <SizedBox width={10} />
-              <PrimaryLink href={macX64Asset?.browser_download_url} download>
-                Download for Apple Intel
-              </PrimaryLink>
-            </div>
-          )}
-          <SizedBox height={theme.spacing.md} />
-          <ReleaseLink href={latestRelease?.url}>
-            {latestRelease?.tagName ?? '-'}
-          </ReleaseLink>
-        </InstallMethod>
-      </div>
-    )
-  }
+  }, [width])
 
   return (
     <MainLayout>
       <PageMeta
         title='Flowser - Supercharged development #onFlow blockchain'
-        description='Flowser is first-of-its-kind development tool for Flow blockchain. It does the heavy work of managing blockchain emulator, inspecting the current state, interacting with the network and much more!'
+        description='Flowser is a user-friendly GUI development tool for Flow blockchain. It does the heavy work of managing blockchain emulator, indexing the blockchain, executing interactions and much more!'
       />
 
       <LandingSection>
-        <SizedBox height={theme.spacing.lg} />
-
         <Title>
           Supercharged development <FlowHashTag>#onFlow</FlowHashTag>{' '}
           <FlowLogo src='/images/flow_logo.svg' alt='Flow blockchain logo' />{' '}
           blockchain
         </Title>
-        <Description>
-          Flowser is your graphical development inspection tool. It is giving
-          you confidence, your smart contracts are behaving as intended, and
-          brings the world of transactions and blocks in beautiful colours
-          making it easy to understand.
-        </Description>
+
+        <Link href='/download'>
+          <PrimaryLink>Download desktop app</PrimaryLink>
+        </Link>
 
         <SizedBox height={theme.spacing.xl} />
 
-        {renderDownloadOptions()}
+        <HeroVideo
+          videoRef={heroVideoRef}
+          src='/videos/hero-demo.mp4'
+          height={heroVideoResolutionY}
+        />
       </LandingSection>
 
       <SizedBox height={theme.spacing.xl} />
 
       <Section
-        title='Simple and transparent web3 development'
-        description="Developing a modern website is a very transparent process - you make some changes and those get immediately reflected on your local development preview. But that's not the case with most today's web3 dev tools."
+        title='Your gateway to Flow 🌊'
+        description='Flowser guides you thought your dev journey with an easy to use GUI.'
       >
         <FeatureShowcase
-          title='Superpower of a snapshot'
-          description='Snapshots are a way to save the state of your local blockchain and later jump back to it. All of that is available right from the GUI!'
-          imageSrc='/images/snapshot.png'
-          iconSrc='/images/snapshot_icon.svg'
+          title='Get Interactive'
+          description='The simplest way to interact with the Flow blockchain. We build a dynamic UI for executing scripts or transactions.'
+          videoSrc='/videos/interactions.mp4'
+          iconSrc='/images/cursor_click.svg'
         />
       </Section>
 
       <Section
-        title='First GUI dev tool #onFlow'
-        description='Flowser gives you a complete real-time overview of your local blockchain without needing to manually execute various Flow CLI commands and Cadence scripts.'
+        title='Focusing on DX 🧑‍💻'
+        description='Building a web3 product is hard enough, why also bother with all the hastles of local development?'
       >
         <FeatureShowcase
-          title='Easy-breezy Storage Inspection'
-          description="Each Flow account stores owned data (e.g. NFTs, Fungible tokens,...) in it's storage. Flowser exposes that within a simple and intuitive UI."
-          imageSrc='/images/storage.png'
-          iconSrc='/images/storage_icon.svg'
+          title='Data at your fingertips'
+          description='View all the blockchain data in a consolidated GUI. No more running around, just Flowse.'
+          videoSrc='/videos/data-view-demo.mp4'
+          iconSrc='/images/block.svg'
           imageOnRight
         />
+      </Section>
+
+      <Section
+        title="We'd love your feedback 🙋"
+        description='Any thoughts or questions on how to improve Flowser app are welcome.'
+      >
+        <PrimaryLink
+          href='https://github.com/onflowser/flowser/issues/new/choose'
+          target='_blank'
+        >
+          Submit feedback on Github
+        </PrimaryLink>
       </Section>
     </MainLayout>
   )
 }
 
+const HeroVideo = styled(AutoplayVideo)`
+  width: 100%;
+  object-fit: cover;
+  animation: glowing 2s infinite alternate;
+
+  @media (min-width: 700px) {
+    object-position: 0 -50px;
+  }
+
+  @keyframes glowing {
+    0% {
+      box-shadow: 2px 2px 15px 15px #ffdd6210;
+    }
+    50% {
+      box-shadow: 2px 2px 20px 20px #ffdd6310;
+    }
+    100% {
+      box-shadow: 2px 2px 15px 15px #ffdd6210;
+    }
+  }
+`
+
 const LandingSection = styled.div`
-  max-width: 700px;
   margin: auto;
   text-align: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `
 
 const Title = styled.h1`
   color: ${(props) => props.theme.color.light};
   font-size: ${(props) => props.theme.fontSize.big};
   font-weight: normal;
-`
+  max-width: 700px;
 
-const Description = styled.p`
-  color: ${(props) => props.theme.color.grey};
-  font-size: ${(props) => props.theme.fontSize.md};
-  line-height: ${(props) => props.theme.lineHeight.lg};
-`
-
-const Notice = styled(Description)`
-  color: ${(props) => props.theme.color.light};
+  @media (max-width: 800px) {
+    max-width: unset;
+    font-size: ${(props) => props.theme.fontSize.lg};
+  }
 `
 
 const FlowHashTag = styled.span`
@@ -177,21 +160,6 @@ const FlowLogo = styled.img`
       transform: translateY(5px);
     }
   }
-`
-
-const InstallMethod = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: ${(props) => props.theme.color.light};
-`
-
-const OrText = styled.div`
-  color: ${(props) => props.theme.color.grey};
-`
-
-const ReleaseLink = styled(ExternalLink)`
-  color: ${(props) => props.theme.color.grey} !important;
 `
 
 export default Index
