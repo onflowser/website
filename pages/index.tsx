@@ -60,7 +60,7 @@ function Index() {
 
       <Section
         title='Your gateway to Flow 🌊'
-        description='Flowser guides you thought your dev journey with an easy to use GUI.'
+        description='Flowser guides you through your dev journey with an easy to use GUI.'
       >
         <FeatureShowcase
           title='Get Interactive'
