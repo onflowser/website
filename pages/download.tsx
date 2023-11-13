@@ -1,7 +1,11 @@
 import { MainLayout } from '../layouts/Main'
-import { useGithub } from '../lib/use-github'
+import {
+  AppAssetMetadata,
+  FlowserArch,
+  FlowserPlatform,
+  useGithub
+} from '../lib/use-github'
 import React, { useEffect, useState } from 'react'
-import { getPlatformName, OsPlatformName } from '../lib/utils'
 import { ExternalLink } from '../components/ExternalLink'
 import { SizedBox } from '../components/SizedBox'
 import { theme } from '../styles/theme'
@@ -29,26 +33,8 @@ const Title = styled.h1`
 `
 
 function DownloadOptions() {
-  const { latestRelease, winAsset, macArmAsset, macX64Asset } = useGithub()
-  const [platform, setPlatform] = useState<OsPlatformName>('MacOS')
-
-  useEffect(() => {
-    setPlatform(getPlatformName())
-  }, [])
-
-  if (platform === 'Linux') {
-    return (
-      <div>
-        <Notice>🚧 Linux is currently not yet supported. 🚧</Notice>
-        <Notice>
-          If you would benefit from adding Linux support, tell us here:{' '}
-          <ExternalLink href='https://github.com/onflowser/flowser/discussions/142'>
-            github.com/onflowser/flowser/discussions/142
-          </ExternalLink>
-        </Notice>
-      </div>
-    )
-  }
+  const { latestRelease, assets } = useGithub()
+  const currentPlatform = useCurrentPlatform()
 
   return (
     <div>
@@ -63,23 +49,16 @@ function DownloadOptions() {
       <SizedBox height={theme.spacing.md} />
 
       <InstallMethod>
-        Download directly
+        Download directly for {getPlatformName(currentPlatform)}
         <SizedBox height={theme.spacing.sm} />
-        {platform === 'Windows' ? (
-          <PrimaryLink href={winAsset?.browser_download_url} download>
-            Download for Windows
-          </PrimaryLink>
-        ) : (
-          <div style={{ display: 'flex' }}>
-            <PrimaryLink href={macArmAsset?.browser_download_url} download>
-              Download for Apple Silicon
-            </PrimaryLink>
-            <SizedBox width={10} />
-            <PrimaryLink href={macX64Asset?.browser_download_url} download>
-              Download for Apple Intel
-            </PrimaryLink>
-          </div>
-        )}
+        <div style={{ display: 'flex', columnGap: '10px' }}>
+          {currentPlatform === 'linux' ? (
+            <CurrentPlatformAssetLink assets={assets} arch='amd64' />
+          ) : (
+            <CurrentPlatformAssetLink assets={assets} arch='x64' />
+          )}
+          <CurrentPlatformAssetLink assets={assets} arch='arm64' />
+        </div>
         <SizedBox height={theme.spacing.md} />
         <ReleaseLink href={latestRelease?.url}>
           {latestRelease?.tagName ?? '-'}
@@ -89,15 +68,87 @@ function DownloadOptions() {
   )
 }
 
-const Description = styled.p`
-  color: ${(props) => props.theme.color.grey};
-  font-size: ${(props) => props.theme.fontSize.md};
-  line-height: ${(props) => props.theme.lineHeight.lg};
-`
+function getPlatformName(platform: FlowserPlatform) {
+  switch (platform) {
+    case 'win':
+      return 'Windows'
+    case 'mac':
+      return 'MacOS'
+    case 'linux':
+      return 'Linux'
+  }
+}
 
-const Notice = styled(Description)`
-  color: ${(props) => props.theme.color.light};
-`
+function useCurrentPlatform(): FlowserPlatform {
+  const [platform, setPlatform] = useState<FlowserPlatform>('mac')
+
+  function getDefaultPlatform() {
+    const { platform } = window.navigator
+    switch (true) {
+      case platform.includes('Mac'):
+        return 'mac'
+      case platform.includes('Win'):
+        return 'win'
+      case platform.includes('Linux'):
+        return 'linux'
+      default:
+        return 'mac'
+    }
+  }
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search)
+    const platformOverride = urlParams.get('platform')
+
+    if (platformOverride) {
+      setPlatform(platformOverride as FlowserPlatform)
+    } else {
+      setPlatform(getDefaultPlatform)
+    }
+  }, [])
+
+  return platform
+}
+
+type DownloadButtonProps = {
+  assets: AppAssetMetadata[]
+  arch: FlowserArch
+  title?: string
+}
+
+function CurrentPlatformAssetLink(props: DownloadButtonProps) {
+  const currentPlatform = useCurrentPlatform()
+  const metadata = props.assets.find(
+    (e) => e.platform === currentPlatform && e.arch === props.arch
+  )
+
+  if (!metadata) {
+    return null
+  }
+
+  function formatArch() {
+    if (currentPlatform === 'mac') {
+      switch (metadata.arch) {
+        case 'x64':
+          return 'Intel'
+        case 'arm64':
+          return 'Apple Silicon'
+      }
+    } else {
+      return metadata.arch
+    }
+  }
+
+  return (
+    <PrimaryLink
+      href={metadata.asset.browser_download_url}
+      style={{ width: 150 }}
+      download
+    >
+      {formatArch()}
+    </PrimaryLink>
+  )
+}
 
 const InstallMethod = styled.div`
   display: flex;

@@ -4,19 +4,3 @@ export function isEmoji(value) {
 
   return regex.test(value)
 }
-
-export type OsPlatformName = 'MacOS' | 'Windows' | 'Linux'
-
-export function getPlatformName(): OsPlatformName {
-  const { platform } = window.navigator
-  switch (true) {
-    case platform.includes('Mac'):
-      return 'MacOS'
-    case platform.includes('Win'):
-      return 'Windows'
-    case platform.includes('Linux'):
-      return 'Linux'
-    default:
-      return 'MacOS'
-  }
-}
